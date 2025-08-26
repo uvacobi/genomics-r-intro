@@ -46,17 +46,7 @@ pipes (`%>%`) to combine them:
 Packages in R are sets of additional functions that let you do more
 stuff in R. The functions we've been using, like `str()`, come built into R;
 packages give you access to more functions. You need to install a package and
-then load it to be able to use it.
-
-```{r, eval=FALSE, purl=FALSE}
-install.packages("dplyr") ## installs dplyr package
-install.packages("tidyr") ## installs tidyr package
-install.packages("ggplot2") ## installs ggplot2 package
-install.packages("readr") ## install readr package
-```
-
-You might get asked to choose a CRAN mirror -- this is asking you to
-choose a site to download the package from. The choice doesn't matter too much; I'd recommend choosing the RStudio mirror.
+then load it to be able to use it. For this lesson, we have installed all the packages for you, so you should be able to load them for use
 
 ```{r, message=FALSE, purl=FALSE}
 library("dplyr")          ## loads in dplyr package to use
@@ -69,18 +59,6 @@ You only need to install a package once per computer, but you need to load it
 every time you open a new R session and want to use that package.
 
 :::::::::::::::::::::::::::::::::::::::::  callout
-
-## Tip: Installing packages
-
-It may be temping to install the `tidyverse` package, as it contains many
-useful collection of packages for this lesson and beyond. However, when
-teaching or following this lesson, we advise that participants install
-`dplyr`, `readr`, `ggplot2`, and `tidyr` individually as shown above.
-Otherwise, a substaial amount of the lesson will be spend waiting for the
-installation to complete.
-
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
 
 ## What is dplyr?
 
@@ -107,7 +85,7 @@ The Tidyverse's `readr` package provides its own unique way of loading .csv file
 Now let's load our vcf .csv file using `read_csv()`:
 
 ```{r, include=FALSE, echo=FALSE, eval=TRUE, purl=FALSE}
-variants <- read_csv("data/combined_tidy_vcf.csv") 
+variants <- read_csv("combined_tidy_vcf.csv") 
 ```
 
 ### Taking a quick look at data frames
@@ -246,9 +224,7 @@ useful when you need to many things to the same data set. It was
 possible to do this before pipes were added to R, but it was
 much messier and more difficult. Pipes in R look like
 `%>%` and are made available via the `magrittr` package, which is installed as
-part of `dplyr`. If you use RStudio, you can type the pipe with
-<kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>M</kbd> if you're using a PC,
-or <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>M</kbd> if you're using a Mac.
+part of `dplyr`. 
 
 ```{r, echo=TRUE, eval=TRUE, purl=FALSE}
 variants %>%
