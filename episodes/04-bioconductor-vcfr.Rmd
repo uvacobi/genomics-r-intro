@@ -29,27 +29,27 @@ So far we have told you about using packages that are included in the base insta
 
 ## So how do I use it?
 
-Since access to the [Bioconductor](https://bioconductor.org/) repository is not built in to base R 'out of the box', there are a couple steps needed to install packages from this alternative source. We will work through the steps (only 2!) to install a package to help with the VCF analysis we are working on, but you can use the same approach to install any of the many thousands of available packages.
+Access to the [Bioconductor](https://bioconductor.org/) repository is not built in to base R 'out of the box', but the default installation on UVA HPC includes a package that *is* on CRAN, `BiocManager`. This package will allow us to use it to install packages from Bioconductor. You can think of Bioconductor kind of like an alternative app store for your phone, except instead of apps you are installing packages, and instead of your phone it's your local R package library.
 
-![](fig/bioconductor_website_screenshot.jpg){alt='screenshot of bioconductor homepage'}
-
-## First, install the `BiocManager` package
-
-The first step is to install a package that *is* on CRAN, `BiocManager`. This package will allow us to use it to install packages from Bioconductor. You can think of Bioconductor kind of like an alternative app store for your phone, except instead of apps you are installing packages, and instead of your phone it's your local R package library.
-
-```{r install-biocmanager, eval=FALSE}
-# install the BiocManager from CRAN using the base R install.packages() function
-install.packages("BiocManager")
-```
-
-To check if this worked (and also so you can make a note of the version for reproducibility purposes), you can run `BiocManager::version()` and it should give you the version number.
+To ensure that we have access to BiocManager, you can run `BiocManager::version()` and it should give you the version number.
 
 ```{r check-bioconductor-version, eval=FALSE}
 # to make sure it worked, check the version
 BiocManager::version()
 ```
 
-## Second, install the vcfR package from Bioconductor using `BiocManager`
+## Install a package from Bioconductor using `BiocManager`
+
+You do not have to do this in this lesson, but if you wanted to install a package, say `vcfR` from `BiocManager`, you would use the following command 
+
+
+```{r install-vcfR, eval=FALSE}
+# install the vcfR package from bioconductor using BiocManager::install()
+BiocManager::install("vcfR")
+```
+
+Depending on your particular system, you may need to also allow it to install some dependencies or update installed packages in order to successfully complete the process.
+
 
 :::::::::::::::::::::::::::::::::::::::::  callout
 
@@ -58,13 +58,6 @@ BiocManager::version()
 Just be aware that installing packages that have many dependencies can take a while.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
-
-```{r install-vcfR, eval=FALSE}
-# install the vcfR package from bioconductor using BiocManager::install()
-BiocManager::install("vcfR")
-```
-
-Depending on your particular system, you may need to also allow it to install some dependencies or update installed packages in order to successfully complete the process.
 
 :::::::::::::::::::::::::::::::::::::::::  callout
 
@@ -118,14 +111,6 @@ vcf files in R.
 
 You may or may not want to try installing the package, since not all dependencies always install easily. However, this will at least let you see what is available.
 
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
-:::::::::::::::::::::::::::::::::::::::::  callout
-
-## Tip: Refreshing the RStudio package view after installing
-
-If you install a package from Bioconductor, you may need to refresh the RStudio package view to see it in your list. You can do this by clicking the "Refresh" button in the Packages pane of RStudio.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
