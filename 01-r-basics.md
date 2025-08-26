@@ -84,17 +84,6 @@ need this technical knowledge.
 
 ## Creating objects in R
 
-::::::::::::::::::::::::::::::::::::::::::  prereq
-
-## Reminder
-
-At this point you should be coding along in the "**genomics\_r\_basics.R**"
-script we created in the last episode. Writing your commands in the script
-(and commenting it) will make it easier to record what you did and why.
-
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
 What might be called a variable in many languages is called an **object**
 in R.
 
@@ -104,48 +93,38 @@ in R.
 - a value (e.g. '1')
 - the assignment operator ('\<-')
 
-In your script, "**genomics\_r\_basics.R**", using the R assignment operator '\<-',
-assign '1' to the object 'first_value' as shown. Remember to leave a comment in the line
-above (using the '#') to explain what you are doing:
+Let's use the R assignment operator '\<-' to assign '1' to the object 'first_value' as shown. 
 
 
 ``` r
-# this line creates the object 'first_value' and assigns it the value '1'
-
 first_value <- 1
 ```
 
-Next, run this line of code in your script. You can run a line of code
-by hitting the <KBD>Run</KBD> button that is just above the first line of your
-script in the header of the Source pane or you can use the appropriate shortcut:
+To see if the assignment was successful, let's print the value of `first_value` to the screen. Enter the following
 
-- Windows execution shortcut: <KBD>Ctrl</KBD>\+<KBD>Enter</KBD>
-- Mac execution shortcut: <KBD>Cmd(⌘)</KBD>\+<KBD>Enter</KBD>
 
-To run multiple lines of code, you can highlight all the line you wish to run
-and then hit <KBD>Run</KBD> or use the shortcut key combo listed above.
-
-In the RStudio 'Console' you should see:
-
-```output
-first_value <- 1
->
+``` r
+first_value
 ```
 
-The 'Console' will display lines of code run from a script and any outputs or
-status/warning/error messages (usually in red).
+``` output
+[1] 1
+```
 
-In the 'Environment' window you will also get a table:
-
-| Values              |                                                                                                                                                                                                                                             |
-| ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| first_value         | 1                                                                                                                                                                                                                                           |
-
-The 'Environment' window allows you to keep track of the objects you have
-created in R.
+and you should see 
 
 
-:::::::::::::::::::::::::::::::::::::::::  callout
+``` r
+[1] 1
+```
+
+``` error
+Error in parse(text = input): <text>:1:1: unexpected '['
+1: [
+    ^
+```
+
+:::::::::::::::::::::::::::::::::::::::  callout
 
 ## Tip: Use of white space for readability
 
@@ -226,23 +205,6 @@ more about as you write more R code. There are several "style guides" that
 have advice. One of the more widely used is the [tidyverse R style guide](https://style.tidyverse.org/index.html),
 but there is also a [Google R style guide](https://google.github.io/styleguide/Rguide.html), and
 [Jean Fan's R style guide](https://jef.works/R-style-guide/), among others.
-
-:::::::::::::::::::::::::::::::::::::::::  callout
-
-## Tip: Pay attention to warnings in the script console
-
-If you enter a line of code in your script that contains an error, RStudio
-may give you an error message and underline this mistake. Sometimes these
-messages are easy to understand, but often the messages may need some figuring
-out. Paying attention to these warnings will help you avoid mistakes. In the example below, our object name has a space, which
-is not allowed in R. The error message does not say this directly,
-but R is "not sure"
-about how to assign the name to "human\_ chr\_number" when the object name we
-want is "human\_chr\_number".
-
-![RStudio script warning](fig/rstudio_script_warning.png)
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
 
 ## Reassigning object names or deleting objects
 
