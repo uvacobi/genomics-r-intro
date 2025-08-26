@@ -219,6 +219,7 @@
         <ul><li><a href="#getting-ready-to-use-r-for-the-first-time">Getting ready to use R for the first time</a></li>
 <li><a href="#a-brief-history-of-r">A Brief History of R</a></li>
 <li><a href="#advantages-of-using-r">Advantages of using R</a></li>
+<li><a href="#r-on-uva-hpc">R on UVA HPC</a></li>
         </ul></div><!--/div.accordion-body-->
     </div><!--/div.accordion-collapse-->
 
@@ -428,6 +429,45 @@ use, or where the size of the data set created issues?</p>
 </div>
 </div>
 </div>
+</section><section><h2 class="section-heading" id="r-on-uva-hpc">R on UVA HPC<a class="anchor" aria-label="anchor" href="#r-on-uva-hpc"></a></h2>
+<hr class="half-width"><p>On the UVA HPC system, R is available through our module system. For
+example, to load R, you can type:</p>
+<div class="codewrapper sourceCode" id="cb1">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="ex">module</span> load goolf R/4.4.1</span></code></pre>
+</div>
+<p>and press <kbd>Return</kbd>. Now type the following to get into the R
+environment</p>
+<div class="codewrapper sourceCode" id="cb2">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="ex">R</span></span></code></pre>
+</div>
+<p>and press <kbd>Return</kbd>. You should see output on the screen
+which looks like this :</p>
+<pre><code>R version 4.4.1 (2024-06-14) -- "Race for Your Life"
+Copyright (C) 2024 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+&gt;
+</code></pre>
+<p>You now have a prompt <code>&gt;</code> where you can enter R
+commands.</p>
 <div id="keypoints1" class="callout keypoints">
 <div class="callout-square">
 <i class="callout-icon" data-feather="key"></i>
