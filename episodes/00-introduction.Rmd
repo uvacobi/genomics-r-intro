@@ -66,6 +66,50 @@ size of the data set created issues?
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
+## R on UVA HPC
+
+On the UVA HPC system, R is available through our module system.  For example, to load R, you can type:
+
+```bash
+module load goolf R/4.4.1
+```
+
+and press <kbd>Return</kbd>. Now type the following to get into the R environment
+
+```bash
+R
+```
+
+and press <kbd>Return</kbd>. You should see output on the screen which looks like this :
+
+```
+R version 4.4.1 (2024-06-14) -- "Race for Your Life"
+Copyright (C) 2024 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> 
+
+```
+
+You now have a prompt `>` where you can enter R commands.
+
+
+
+
 :::::::::::::::::::::::::::::::::::::::: keypoints
 
 - R is a powerful, popular open-source scripting language
