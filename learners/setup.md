@@ -78,5 +78,5 @@ Let’s copy the file into your working directory so you have your own copy. Run
 cp /standard/bims6000/r_day2/combined_tidy_vcf.csv .
 ```
 
-and press <kbd>Return</kbd>. The cp command copies files. Here, it copies the file `combined_tidy_vcf.csv` from the shared class folder into your current directory, day2. The . means “put it here.”)
+and press <kbd>Return</kbd>. The cp command copies files. Here, it copies the file `combined_tidy_vcf.csv` from the shared class folder into your current directory, day2. The . means “put it here.”
 
