@@ -58,8 +58,6 @@ library("readr")          ## load in readr package to use
 You only need to install a package once per computer, but you need to load it
 every time you open a new R session and want to use that package.
 
-:::::::::::::::::::::::::::::::::::::::::  callout
-
 ## What is dplyr?
 
 The package `dplyr` is a fairly new (2014) package that tries to provide easy
