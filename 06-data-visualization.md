@@ -29,10 +29,6 @@ source: Rmd
 
 
 
-
-
-
-
 ## Introduction to **`ggplot2`**
 
 <img src="https://ggplot2.tidyverse.org/logo.png" align="right" alt="Line plot enclosed in hexagon shape with ggplot2 typed beneath and www.rstudio.com at the bottom.">
@@ -46,16 +42,9 @@ The idea of **mapping** is crucial in **ggplot**. One familiar example is to *ma
 
 **Tip:** when having doubts about whether a variable is [continuous or discrete](https://en.wikipedia.org/wiki/Continuous_or_discrete_variable), a quick way to check is to use the [`summary()`](https://www.geeksforgeeks.org/get-summary-of-results-produced-by-functions-in-r-programming-summary-function/) function. Continuous variables have descriptive statistics but not the discrete variables.
 
-## Installing `tidyverse`
+## Loading packages
 
-First, we need to install the `ggplot2` package.
-
-
-``` r
-install.packages("ggplot2")
-```
-
-Now, let's load the `ggplot2` package:
+Let's load the `ggplot2` package:
 
 
 ``` r
@@ -88,6 +77,39 @@ The following objects are masked from 'package:base':
 ```
 
 As we can see from above output **`ggplot2`** has been already loaded along with other packages as part of the **`tidyverse`** framework.
+
+
+## Note on saving plots/graphics
+
+R can be used to create complex plots from data, and we typically save them in files so the plots can be included in reports, presentations, and manuscripts. Let's consider an example of a scatter plot and see how we would save it and then view it on the HPC. `mtcars` is a data.frame that includes data extracted from the 1974 Motor Trend US magazine, and comprises fuel consumption and 10 aspects of automobile design and performance for 32 automobiles. Let's check if there is a correlation between Miles/(US) gallon and Weight (lb/1000) of those cars using visual inspection
+
+
+``` r
+x <- mtcars$mpg
+y <- mtcars$wt
+
+pdf("mpg_vs_wt.pdf")
+plot(x, y, xlab="mpg", ylab="wt")
+dev.off()
+```
+
+``` output
+png 
+  2 
+```
+
+The above code does the following step by step:
+
+1. `x <- mtcars$mpg` extracts the miles per gallon column into x.
+2. `y <- mtcars$wt` extracts the weight (1000 lbs) column into y.
+3. `pdf("mpg_vs_wt.pdf")` opens a PDF graphics device, so all plots are written to mpg_vs_wt.pdf.
+4. `plot(x, y, xlab="mpg", ylab="wt")` creates a scatterplot with custom axis labels.
+5. `dev.off()` closes the PDF device, finalizing the file.
+
+To view the plot, go to [https://ood.hpc.virginia.edu/pun/sys/dashboard](https://ood.hpc.virginia.edu/pun/sys/dashboard), and log in with your credentials. This will bring you to a unified dashboard that provides access to your HPC resources. From the top menu, open the `Files` tab and select `Home Directory` to launch a file explorer. Navigate to the `day2` folder, where you should find a file named `mpg_vs_wt.pdf`. Clicking on this file will open the plot directly in your browser. As the plot suggests, there might be a negative correlation between the two variables.
+
+So, whenever you create a plot, save it as a PDF with a clear, descriptive name. You can then view the file through [https://ood.hpc.virginia.edu/pun/sys/dashboard](https://ood.hpc.virginia.edu/pun/sys/dashboard).
+
 
 ## Loading the dataset
 
@@ -144,16 +166,36 @@ Alternatively, we can display the first a few rows (vertically) of the table usi
 head(variants)
 ```
 
-
-
-|sample_id  |CHROM      |    POS|ID |REF      |ALT       | QUAL|FILTER |INDEL | IDV| IMF| DP|       VDB| RPB| MQB| BQB|     MQSB|       SGB|     MQ0F|ICB |HOB | AC| AN|DP4     | MQ|Indiv                                                              |gt_PL | gt_GT|gt_GT_alleles |
-|:----------|:----------|------:|:--|:--------|:---------|----:|:------|:-----|---:|---:|--:|---------:|---:|---:|---:|--------:|---------:|--------:|:---|:---|--:|--:|:-------|--:|:------------------------------------------------------------------|:-----|-----:|:-------------|
-|SRR2584863 |CP000819.1 |   9972|NA |T        |G         |   91|NA     |FALSE |  NA|  NA|  4| 0.0257451|  NA|  NA|  NA|       NA| -0.556411| 0.000000|NA  |NA  |  1|  1|0,0,0,4 | 60|/home/dcuser/dc_workshop/results/bam/SRR2584863.aligned.sorted.bam |121,0 |     1|G             |
-|SRR2584863 |CP000819.1 | 263235|NA |G        |T         |   85|NA     |FALSE |  NA|  NA|  6| 0.0961330|   1|   1|   1|       NA| -0.590765| 0.166667|NA  |NA  |  1|  1|0,1,0,5 | 33|/home/dcuser/dc_workshop/results/bam/SRR2584863.aligned.sorted.bam |112,0 |     1|T             |
-|SRR2584863 |CP000819.1 | 281923|NA |G        |T         |  217|NA     |FALSE |  NA|  NA| 10| 0.7740830|  NA|  NA|  NA| 0.974597| -0.662043| 0.000000|NA  |NA  |  1|  1|0,0,4,5 | 60|/home/dcuser/dc_workshop/results/bam/SRR2584863.aligned.sorted.bam |247,0 |     1|T             |
-|SRR2584863 |CP000819.1 | 433359|NA |CTTTTTTT |CTTTTTTTT |   64|NA     |TRUE  |  12| 1.0| 12| 0.4777040|  NA|  NA|  NA| 1.000000| -0.676189| 0.000000|NA  |NA  |  1|  1|0,1,3,8 | 60|/home/dcuser/dc_workshop/results/bam/SRR2584863.aligned.sorted.bam |91,0  |     1|CTTTTTTTT     |
-|SRR2584863 |CP000819.1 | 473901|NA |CCGC     |CCGCGC    |  228|NA     |TRUE  |   9| 0.9| 10| 0.6595050|  NA|  NA|  NA| 0.916482| -0.662043| 0.000000|NA  |NA  |  1|  1|1,0,2,7 | 60|/home/dcuser/dc_workshop/results/bam/SRR2584863.aligned.sorted.bam |255,0 |     1|CCGCGC        |
-|SRR2584863 |CP000819.1 | 648692|NA |C        |T         |  210|NA     |FALSE |  NA|  NA| 10| 0.2680140|  NA|  NA|  NA| 0.916482| -0.670168| 0.000000|NA  |NA  |  1|  1|0,0,7,3 | 60|/home/dcuser/dc_workshop/results/bam/SRR2584863.aligned.sorted.bam |240,0 |     1|T             |
+``` output
+   sample_id      CHROM    POS ID      REF       ALT QUAL FILTER INDEL IDV IMF
+1 SRR2584863 CP000819.1   9972 NA        T         G   91     NA FALSE  NA  NA
+2 SRR2584863 CP000819.1 263235 NA        G         T   85     NA FALSE  NA  NA
+3 SRR2584863 CP000819.1 281923 NA        G         T  217     NA FALSE  NA  NA
+4 SRR2584863 CP000819.1 433359 NA CTTTTTTT CTTTTTTTT   64     NA  TRUE  12 1.0
+5 SRR2584863 CP000819.1 473901 NA     CCGC    CCGCGC  228     NA  TRUE   9 0.9
+6 SRR2584863 CP000819.1 648692 NA        C         T  210     NA FALSE  NA  NA
+  DP       VDB RPB MQB BQB     MQSB       SGB     MQ0F ICB HOB AC AN     DP4 MQ
+1  4 0.0257451  NA  NA  NA       NA -0.556411 0.000000  NA  NA  1  1 0,0,0,4 60
+2  6 0.0961330   1   1   1       NA -0.590765 0.166667  NA  NA  1  1 0,1,0,5 33
+3 10 0.7740830  NA  NA  NA 0.974597 -0.662043 0.000000  NA  NA  1  1 0,0,4,5 60
+4 12 0.4777040  NA  NA  NA 1.000000 -0.676189 0.000000  NA  NA  1  1 0,1,3,8 60
+5 10 0.6595050  NA  NA  NA 0.916482 -0.662043 0.000000  NA  NA  1  1 1,0,2,7 60
+6 10 0.2680140  NA  NA  NA 0.916482 -0.670168 0.000000  NA  NA  1  1 0,0,7,3 60
+                                                               Indiv gt_PL
+1 /home/dcuser/dc_workshop/results/bam/SRR2584863.aligned.sorted.bam 121,0
+2 /home/dcuser/dc_workshop/results/bam/SRR2584863.aligned.sorted.bam 112,0
+3 /home/dcuser/dc_workshop/results/bam/SRR2584863.aligned.sorted.bam 247,0
+4 /home/dcuser/dc_workshop/results/bam/SRR2584863.aligned.sorted.bam  91,0
+5 /home/dcuser/dc_workshop/results/bam/SRR2584863.aligned.sorted.bam 255,0
+6 /home/dcuser/dc_workshop/results/bam/SRR2584863.aligned.sorted.bam 240,0
+  gt_GT gt_GT_alleles
+1     1             G
+2     1             T
+3     1             T
+4     1     CTTTTTTTT
+5     1        CCGCGC
+6     1             T
+```
 
 **`ggplot2`** functions like data in the **long** format, i.e., a column for every dimension (variable), and a row for every observation. Well-structured data will save you time when making figures with **`ggplot2`**
 
@@ -166,19 +208,22 @@ To build a ggplot, we will use the following basic template that can be used for
 ggplot(data = <DATA>, mapping = aes(<MAPPINGS>)) +  <GEOM_FUNCTION>()
 ```
 
-- use the `ggplot()` function and bind the plot to a specific data frame using the
-  `data` argument
+- use the `ggplot()` function and bind the plot to a specific data frame using the `data` argument. Here, we save it in a file named `scatterplot.pdf` which you can view through [https://ood.hpc.virginia.edu/pun/sys/dashboard](https://ood.hpc.virginia.edu/pun/sys/dashboard).
 
 
 ``` r
+pdf("scatterplot.pdf")
 ggplot(data = variants)
+dev.off()
 ```
 
-- define a mapping (using the aesthetic (`aes`) function), by selecting the variables to be plotted and specifying how to present them in the graph, e.g. as x and y positions or characteristics such as size, shape, color, etc.
+- define a mapping (using the aesthetic (`aes`) function), by selecting the variables to be plotted and specifying how to present them in the graph, e.g. as x and y positions or characteristics such as size, shape, color, etc. We will overwrite the previous plot, but feel free to save this plot in a different file.
 
 
 ``` r
+pdf("scatterplot.pdf")
 ggplot(data = variants, aes(x = POS, y = DP))
+dev.off()
 ```
 
 - add 'geoms' – graphical representations of the data in the plot (points,
@@ -192,11 +237,16 @@ To add a geom to the plot use the `+` operator. Because we have two continuous v
 
 
 ``` r
+pdf("scatterplot.pdf")
 ggplot(data = variants, aes(x = POS, y = DP)) +
   geom_point()
+dev.off()
 ```
 
-<img src="fig/06-data-visualization-rendered-first-ggplot-1.png" style="display: block; margin: auto;" />
+``` output
+png 
+  2 
+```
 
 The `+` in the **`ggplot2`** package is particularly useful because it allows you to modify existing `ggplot` objects. This means you can easily set up plot templates and conveniently explore different types of plots, so the above plot can also be generated with code like this:
 
@@ -206,8 +256,10 @@ The `+` in the **`ggplot2`** package is particularly useful because it allows yo
 coverage_plot <- ggplot(data = variants, aes(x = POS, y = DP))
 
 # Draw the plot
+pdf("scatteplot.pdf")
 coverage_plot +
-  geom_point()
+    geom_point()
+dev.off()
 ```
 
 **Notes**
@@ -233,93 +285,117 @@ Building plots with **`ggplot2`** is typically an iterative process. We start by
 
 
 ``` r
+pdf("scatteplot.pdf")
 ggplot(data = variants, aes(x = POS, y = DP)) +
   geom_point()
+dev.off()
 ```
 
-<img src="fig/06-data-visualization-rendered-create-ggplot-object-1.png" style="display: block; margin: auto;" />
+``` output
+png 
+  2 
+```
 
 Then, we start modifying this plot to extract more information from it. For instance, we can add transparency (`alpha`) to avoid over-plotting:
 
 
 ``` r
+pdf("scatteplot.pdf")
 ggplot(data = variants, aes(x = POS, y = DP)) +
   geom_point(alpha = 0.5)
+dev.off()
 ```
 
-<img src="fig/06-data-visualization-rendered-adding-transparency-1.png" style="display: block; margin: auto;" />
+``` output
+png 
+  2 
+```
 
 We can also add colors for all the points:
 
 
 ``` r
+pdf("scatteplot.pdf")
 ggplot(data = variants, aes(x = POS, y = DP)) +
   geom_point(alpha = 0.5, color = "blue")
+dev.off()
 ```
 
-<img src="fig/06-data-visualization-rendered-adding-colors-1.png" style="display: block; margin: auto;" />
+``` output
+png 
+  2 
+```
 
 Or to color each species in the plot differently, you could use a vector as an input to the argument **color**. **`ggplot2`** will provide a different color corresponding to different values in the vector. Here is an example where we color with **`sample_id`**:
 
 
 ``` r
+pdf("scatteplot.pdf")
 ggplot(data = variants, aes(x = POS, y = DP, color = sample_id)) +
   geom_point(alpha = 0.5)
+dev.off()
 ```
 
-<img src="fig/06-data-visualization-rendered-color-by-sample-1-1.png" style="display: block; margin: auto;" />
+``` output
+png 
+  2 
+```
 
 Notice that we can change the geom layer and colors will be still determined by **`sample_id`**
 
 
 ``` r
+pdf("scatteplot.pdf")
 ggplot(data = variants, aes(x = POS, y = DP, color = sample_id)) +
   geom_line(alpha = 0.5)
+dev.off()
 ```
 
-<img src="fig/06-data-visualization-rendered-color-by-sample-2-1.png" style="display: block; margin: auto;" />
+``` output
+png 
+  2 
+```
 
 To make our plot more readable, we can add axis labels:
 
 
 ``` r
+pdf("scatteplot.pdf")
 ggplot(data = variants, aes(x = POS, y = DP, color = sample_id)) +
   geom_point(alpha = 0.5) +
   labs(x = "Base Pair Position",
        y = "Read Depth (DP)")
+dev.off()
 ```
 
-<img src="fig/06-data-visualization-rendered-add-axis-labels-1.png" style="display: block; margin: auto;" />
+``` output
+png 
+  2 
+```
 
 To add a *main* title to the plot, we use [the title argument for the `labs()` function](https://ggplot2.tidyverse.org/reference/labs.html):
 
 
 ``` r
+pdf("scatteplot.pdf")
 ggplot(data = variants, aes(x = POS, y = DP, color = sample_id)) +
   geom_point(alpha = 0.5) +
   labs(x = "Base Pair Position",
        y = "Read Depth (DP)",
        title = "Read Depth vs. Position")
+dev.off()
 ```
 
-<img src="fig/06-data-visualization-rendered-add-main-title-1.png" style="display: block; margin: auto;" />
-
-Now the figure is complete and ready to be exported and saved to a file. This can be achieved easily using [`ggsave()`](https://ggplot2.tidyverse.org/reference/ggsave.html), which can write, by default, the most recent generated figure into different formats (e.g., `jpeg`, `png`, `pdf`) according to the file extension. So, for example, to create a pdf version of the above figure with a dimension of $6\times4$ inches:
-
-
-``` r
-ggsave ("depth.pdf", width = 6, height = 4)
+``` output
+png 
+  2 
 ```
-
-If we check the *current working directory*, there should be a newly created file called `depth.pdf` with the above plot.
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
 ## Challenge
 
-Use what you just learned to create a scatter plot of mapping quality (`MQ`) over
-position (`POS`) with the samples showing in different colors. Make sure to give your plot
-relevant axis labels.
+Use what you just learned to create a scatter plot of mapping quality (`MQ`) over position (`POS`) with the samples showing in different colors. Make sure to give your plot relevant axis labels. Save the output to a file named `challenge.pdf`
 
 :::::::::::::::  solution
 
@@ -327,19 +403,24 @@ relevant axis labels.
 
 
 ``` r
+pdf('challenge.pdf')
  ggplot(data = variants, aes(x = POS, y = MQ, color = sample_id)) +
   geom_point() +
   labs(x = "Base Pair Position",
        y = "Mapping Quality (MQ)")
+dev.off()
 ```
 
-<img src="fig/06-data-visualization-rendered-scatter-challenge-1.png" style="display: block; margin: auto;" />
+``` output
+png 
+  2 
+```
 
 :::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-To further customize the plot, we can change the default font format:
+To further customize the plot, we can change the default font format. We do not include the commands to save the plot from here on, but you should save and view the plots.
 
 
 ``` r
