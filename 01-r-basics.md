@@ -111,18 +111,7 @@ first_value
 [1] 1
 ```
 
-and you should see 
-
-
-``` r
-[1] 1
-```
-
-``` error
-Error in parse(text = input): <text>:1:1: unexpected '['
-1: [
-    ^
-```
+and convince yourself that you the value assigned to `first_value` is `1`
 
 :::::::::::::::::::::::::::::::::::::::  callout
 
