@@ -82,7 +82,7 @@ The Tidyverse's `readr` package provides its own unique way of loading .csv file
 
 Now let's load our vcf .csv file using `read_csv()`:
 
-```{r, include=FALSE, echo=FALSE, eval=TRUE, purl=FALSE}
+```{r, include=FALSE, echo=FALSE, eval=FALSE, purl=FALSE}
 variants <- read_csv("combined_tidy_vcf.csv") 
 ```
 
@@ -90,7 +90,7 @@ variants <- read_csv("combined_tidy_vcf.csv")
 
 Similar to `str()`, which comes built into R, `glimpse()` is a `dplyr` function that (as the name suggests) gives a glimpse of the data frame.
 
-```{r, echo=FALSE, eval=TRUE, purl=FALSE}
+```{r, echo=FALSE, eval=FALSE, purl=FALSE}
 glimpse(variants)
 ```
 
@@ -100,14 +100,14 @@ In the above output, we can already gather some information about `variants`, su
 
 To select columns of a data frame, use `select()`. The first argument to this function is the data frame (`variants`), and the subsequent arguments are the columns to keep.
 
-```{r, echo=TRUE, eval=TRUE, purl=FALSE}
+```{r, echo=TRUE, eval=FALSE, purl=FALSE}
 select(variants, sample_id, REF, ALT, DP)
 ```
 
 To select all columns *except* certain ones, put a "-" in front of
 the variable to exclude it.
 
-```{r, echo=TRUE, eval=TRUE, purl=FALSE}
+```{r, echo=TRUE, eval=FALSE, purl=FALSE}
 select(variants, -CHROM)
 ```
 
@@ -156,7 +156,7 @@ variants_result
 
 To choose rows, use `filter()`:
 
-```{r, echo=TRUE, eval=TRUE, purl=FALSE}
+```{r, echo=TRUE, eval=FALSE, purl=FALSE}
 filter(variants, sample_id == "SRR2584863")
 ```
 
@@ -224,7 +224,7 @@ much messier and more difficult. Pipes in R look like
 `%>%` and are made available via the `magrittr` package, which is installed as
 part of `dplyr`. 
 
-```{r, echo=TRUE, eval=TRUE, purl=FALSE}
+```{r, echo=TRUE, eval=FALSE, purl=FALSE}
 variants %>%
   filter(sample_id == "SRR2584863") %>%
   select(REF, ALT, DP)
