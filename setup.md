@@ -2,53 +2,81 @@
 title: Setup
 ---
 
-This lesson is an additional lesson to [the genomics workshop](https://datacarpentry.org/genomics-workshop/). Below, is a detailed setup instructions for the main workshop which can also be found on [the main setup page](https://datacarpentry.org/genomics-workshop/setup.html). If you are only here for the Intro to R and RStudio for Genomics lesson, and do not wish to work on the cloud, you can go for option B below where you will only need to [download the data files](https://figshare.com/articles/Data_Carpentry_Genomics_beta_2_0/7726454) to your local working directory where you will create the r-project in.
+## R Genomics Workshop Setup Directions
 
-## R Genomics workshop setup directions
+### Logging into Rivanna/Afton
 
-For general setup for the genomics lessons, see that page of [the genomics workshop](https://datacarpentry.org/genomics-workshop/).
+To log into the Rivanna or Afton HPC cluster, open your terminal (or **MobaXterm** if you are on Windows).  
 
+- On **macOS Catalina or later**, the default shell is **Zsh**. To temporarily switch to **Bash**, open Terminal, type:
 
+```bash
+bash
+```
 
+and press <kbd>Return</kbd>. This switches your shell to Bash for the current session.
 
-## Installing R
+Once you have your terminal open, connect to the HPC cluster by typing:
 
-This workshop is designed to be run on pre-imaged Amazon Web Services (AWS)
-instances. With the exception of a spreadsheet program, all of the software and data used in the workshop are hosted on an Amazon. However, it is beneficial to understand how to install both R and RStudio locally (on your own machine).
+```bash
+ssh -Y uva_compute_id@login.hpc.virginia.edu
+```
 
-Typically we suggest you install R for your operating instructions from Comprehensive R Archive Network (CRAN) at [this page](https://cran.r-project.org/).  
+Replace `uva_compute_id` with your UVA computing ID in the above command. You will then be prompted to enter your UVA NetBadge password. This command securely connects you to the HPC cluster.
 
+### Workspace for This Lesson
 
-::::::::::::::::  spoiler
+First, make sure you are in your home directory. In the terminal, type:
 
-## Windows
+```bash
+cd
+```
 
-Follow the CRAN instructions for downloading the [Windows Binary](https://cran.r-project.org/bin/windows/base/)
+and press <kbd>Return</kbd>.
+(The cd command changes your location. With no arguments, it takes you back to your home directory.)
 
+Next, create a new directory called day2 where you will do your work:
 
-:::::::::::::::::::::::::
+```bash
+mkdir day2
+```
 
-::::::::::::::::  spoiler
+and press <kbd>Return</kbd>. (The mkdir command makes a new folder named day2.)
 
-## Mac OS X
+Move into this directory:
 
-Follow the CRAN instructions for downloading the [MacOS .pkg file](https://cran.r-project.org/bin/macosx/); ensure that you download the package that corresponds to your Mac CPU configuration (e.g. "For Apple silicon (M1/M2) Macs" or  "For older Intel Macs").
+```
+cd day2
+```
 
+and press <kbd>Return</kbd>.
+(Now you are “inside” the day2 folder, and any files you create will be saved here.)
 
+To confirm you are in the correct location, type:
 
-:::::::::::::::::::::::::
+```bash
+pwd
+```
 
-::::::::::::::::  spoiler
+and press <kbd>Return</kbd>.
+(The pwd command prints your current working directory, i.e., the folder you are in.)
 
-## Linux
+The output should look like:
 
-Follow the CRAN instructions for your [Linux Distribution](https://cran.r-project.org/bin/linux/); The instructions for Ubuntu are [found here](https://cran.r-project.org/bin/linux/ubuntu/).
+```
+/home/your_computing_id/day2
+```
 
+with your own computing ID in place of `your_computing_id`.
 
-:::::::::::::::::::::::::
+### Data for This Lesson
+The data for today’s lesson is stored in `/standard/bims6000/r_day2`.
 
+Let’s copy the file into your working directory so you have your own copy. Run:
 
+```bash
+cp /standard/bims6000/r_day2/combined_tidy_vcf.csv .
+```
 
-## Installing RStudio
+and press <kbd>Return</kbd>. The cp command copies files. Here, it copies the file `combined_tidy_vcf.csv` from the shared class folder into your current directory, day2. The . means “put it here.”)
 
-The RStudio integrated development environment (IDE) is a popular way to use R. We will cover what RStudio is in the lesson. All operating systems can go to the Posit LLC [download pages](https://posit.co/download/rstudio-desktop/) to download the appropriate version for their operating system. In most cases, the Posit website will detect your operating system and suggest the correct download. This same page will link to alternatives.
