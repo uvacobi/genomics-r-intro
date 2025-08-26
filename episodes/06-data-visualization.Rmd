@@ -30,15 +30,6 @@ source: Rmd
 ```{r, include=FALSE}
 ```
 
-```{r, echo=FALSE, message=FALSE, warning=FALSE}
-library(printr)
-```
-
-```{r, echo=FALSE, eval=TRUE, purl=FALSE}
-## silently read in CSV file
-variants <- read.csv("https://raw.githubusercontent.com/datacarpentry/genomics-r-intro/main/episodes/data/combined_tidy_vcf.csv")
-```
-
 ## Introduction to **`ggplot2`**
 
 <img src="https://ggplot2.tidyverse.org/logo.png" align="right" alt="Line plot enclosed in hexagon shape with ggplot2 typed beneath and www.rstudio.com at the bottom.">
@@ -52,15 +43,9 @@ The idea of **mapping** is crucial in **ggplot**. One familiar example is to *ma
 
 **Tip:** when having doubts about whether a variable is [continuous or discrete](https://en.wikipedia.org/wiki/Continuous_or_discrete_variable), a quick way to check is to use the [`summary()`](https://www.geeksforgeeks.org/get-summary-of-results-produced-by-functions-in-r-programming-summary-function/) function. Continuous variables have descriptive statistics but not the discrete variables.
 
-## Installing `tidyverse`
+## Loading packages
 
-First, we need to install the `ggplot2` package.
-
-```{r install-ggplot2, echo=TRUE, eval=FALSE}
-install.packages("ggplot2")
-```
-
-Now, let's load the `ggplot2` package:
+Let's load the `ggplot2` package:
 
 ```{r load-ggplot2}
 library(ggplot2)
@@ -74,6 +59,33 @@ library(dplyr)
 ```
 
 As we can see from above output **`ggplot2`** has been already loaded along with other packages as part of the **`tidyverse`** framework.
+
+
+## Note on saving plots/graphics
+
+R can be used to create complex plots from data, and we typically save them in files so the plots can be included in reports, presentations, and manuscripts. Let's consider an example of a scatter plot and see how we would save it and then view it on the HPC. `mtcars` is a data.frame that includes data extracted from the 1974 Motor Trend US magazine, and comprises fuel consumption and 10 aspects of automobile design and performance for 32 automobiles. Let's check if there is a correlation between Miles/(US) gallon and Weight (lb/1000) of those cars using visual inspection
+
+```{r, echo=TRUE}
+x <- mtcars$mpg
+y <- mtcars$wt
+
+pdf("mpg_vs_wt.pdf")
+plot(x, y, xlab="mpg", ylab="wt")
+dev.off()
+```
+
+The above code does the following step by step:
+
+1. `x <- mtcars$mpg` extracts the miles per gallon column into x.
+2. `y <- mtcars$wt` extracts the weight (1000 lbs) column into y.
+3. `pdf("mpg_vs_wt.pdf")` opens a PDF graphics device, so all plots are written to mpg_vs_wt.pdf.
+4. `plot(x, y, xlab="mpg", ylab="wt")` creates a scatterplot with custom axis labels.
+5. `dev.off()` closes the PDF device, finalizing the file.
+
+To view the plot, go to [https://ood.hpc.virginia.edu/pun/sys/dashboard](https://ood.hpc.virginia.edu/pun/sys/dashboard), and log in with your credentials. This will bring you to a unified dashboard that provides access to your HPC resources. From the top menu, open the `Files` tab and select `Home Directory` to launch a file explorer. Navigate to the `day2` folder, where you should find a file named `mpg_vs_wt.pdf`. Clicking on this file will open the plot directly in your browser. As the plot suggests, there might be a negative correlation between the two variables.
+
+So, whenever you create a plot, save it as a PDF with a clear, descriptive name. You can then view the file through [https://ood.hpc.virginia.edu/pun/sys/dashboard](https://ood.hpc.virginia.edu/pun/sys/dashboard).
+
 
 ## Loading the dataset
 
@@ -103,17 +115,20 @@ To build a ggplot, we will use the following basic template that can be used for
 ggplot(data = <DATA>, mapping = aes(<MAPPINGS>)) +  <GEOM_FUNCTION>()
 ```
 
-- use the `ggplot()` function and bind the plot to a specific data frame using the
-  `data` argument
+- use the `ggplot()` function and bind the plot to a specific data frame using the `data` argument. Here, we save it in a file named `scatterplot.pdf` which you can view through [https://ood.hpc.virginia.edu/pun/sys/dashboard](https://ood.hpc.virginia.edu/pun/sys/dashboard).
 
 ```{r, eval=FALSE, purl=FALSE}
+pdf("scatterplot.pdf")
 ggplot(data = variants)
+dev.off()
 ```
 
-- define a mapping (using the aesthetic (`aes`) function), by selecting the variables to be plotted and specifying how to present them in the graph, e.g. as x and y positions or characteristics such as size, shape, color, etc.
+- define a mapping (using the aesthetic (`aes`) function), by selecting the variables to be plotted and specifying how to present them in the graph, e.g. as x and y positions or characteristics such as size, shape, color, etc. We will overwrite the previous plot, but feel free to save this plot in a different file.
 
 ```{r, eval=FALSE, purl=FALSE}
+pdf("scatterplot.pdf")
 ggplot(data = variants, aes(x = POS, y = DP))
+dev.off()
 ```
 
 - add 'geoms' – graphical representations of the data in the plot (points,
@@ -126,8 +141,10 @@ ggplot(data = variants, aes(x = POS, y = DP))
 To add a geom to the plot use the `+` operator. Because we have two continuous variables, let's use [`geom_point()`](https://ggplot2.tidyverse.org/reference/geom_point.html) (i.e., a scatter plot) first:
 
 ```{r first-ggplot, purl=FALSE}
+pdf("scatterplot.pdf")
 ggplot(data = variants, aes(x = POS, y = DP)) +
   geom_point()
+dev.off()
 ```
 
 The `+` in the **`ggplot2`** package is particularly useful because it allows you to modify existing `ggplot` objects. This means you can easily set up plot templates and conveniently explore different types of plots, so the above plot can also be generated with code like this:
@@ -137,8 +154,10 @@ The `+` in the **`ggplot2`** package is particularly useful because it allows yo
 coverage_plot <- ggplot(data = variants, aes(x = POS, y = DP))
 
 # Draw the plot
+pdf("scatteplot.pdf")
 coverage_plot +
-  geom_point()
+    geom_point()
+dev.off()
 ```
 
 **Notes**
@@ -162,90 +181,95 @@ coverage_plot
 Building plots with **`ggplot2`** is typically an iterative process. We start by defining the dataset we'll use, lay out the axes, and choose a geom:
 
 ```{r create-ggplot-object, purl=FALSE}
+pdf("scatteplot.pdf")
 ggplot(data = variants, aes(x = POS, y = DP)) +
   geom_point()
+dev.off()
 ```
 
 Then, we start modifying this plot to extract more information from it. For instance, we can add transparency (`alpha`) to avoid over-plotting:
 
 ```{r adding-transparency, purl=FALSE}
+pdf("scatteplot.pdf")
 ggplot(data = variants, aes(x = POS, y = DP)) +
   geom_point(alpha = 0.5)
+dev.off()
 ```
 
 We can also add colors for all the points:
 
 ```{r adding-colors, purl=FALSE}
-
+pdf("scatteplot.pdf")
 ggplot(data = variants, aes(x = POS, y = DP)) +
   geom_point(alpha = 0.5, color = "blue")
+dev.off()
 ```
 
 Or to color each species in the plot differently, you could use a vector as an input to the argument **color**. **`ggplot2`** will provide a different color corresponding to different values in the vector. Here is an example where we color with **`sample_id`**:
 
 ```{r color-by-sample-1, purl=FALSE}
+pdf("scatteplot.pdf")
 ggplot(data = variants, aes(x = POS, y = DP, color = sample_id)) +
   geom_point(alpha = 0.5)
+dev.off()
 ```
 
 Notice that we can change the geom layer and colors will be still determined by **`sample_id`**
 
 ```{r color-by-sample-2, purl=FALSE}
+pdf("scatteplot.pdf")
 ggplot(data = variants, aes(x = POS, y = DP, color = sample_id)) +
   geom_line(alpha = 0.5)
+dev.off()
 ```
 
 To make our plot more readable, we can add axis labels:
 
 ```{r add-axis-labels, purl=FALSE}
+pdf("scatteplot.pdf")
 ggplot(data = variants, aes(x = POS, y = DP, color = sample_id)) +
   geom_point(alpha = 0.5) +
   labs(x = "Base Pair Position",
        y = "Read Depth (DP)")
+dev.off()
 ```
 
 To add a *main* title to the plot, we use [the title argument for the `labs()` function](https://ggplot2.tidyverse.org/reference/labs.html):
 
 ```{r add-main-title, purl=FALSE}
+pdf("scatteplot.pdf")
 ggplot(data = variants, aes(x = POS, y = DP, color = sample_id)) +
   geom_point(alpha = 0.5) +
   labs(x = "Base Pair Position",
        y = "Read Depth (DP)",
        title = "Read Depth vs. Position")
+dev.off()
 ```
-
-Now the figure is complete and ready to be exported and saved to a file. This can be achieved easily using [`ggsave()`](https://ggplot2.tidyverse.org/reference/ggsave.html), which can write, by default, the most recent generated figure into different formats (e.g., `jpeg`, `png`, `pdf`) according to the file extension. So, for example, to create a pdf version of the above figure with a dimension of $6\times4$ inches:
-
-```{r save-to-file, purl=FALSE}
-ggsave ("depth.pdf", width = 6, height = 4)
-```
-
-If we check the *current working directory*, there should be a newly created file called `depth.pdf` with the above plot.
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
 ## Challenge
 
-Use what you just learned to create a scatter plot of mapping quality (`MQ`) over
-position (`POS`) with the samples showing in different colors. Make sure to give your plot
-relevant axis labels.
+Use what you just learned to create a scatter plot of mapping quality (`MQ`) over position (`POS`) with the samples showing in different colors. Make sure to give your plot relevant axis labels. Save the output to a file named `challenge.pdf`
 
 :::::::::::::::  solution
 
 ## Solution
 
 ```{r scatter-challenge, purl=FALSE}
+pdf('challenge.pdf')
  ggplot(data = variants, aes(x = POS, y = MQ, color = sample_id)) +
   geom_point() +
   labs(x = "Base Pair Position",
        y = "Mapping Quality (MQ)")
+dev.off()
 ```
 
 :::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-To further customize the plot, we can change the default font format:
+To further customize the plot, we can change the default font format. We do not include the commands to save the plot from here on, but you should save and view the plots.
 
 ```{r change-font-family, purl=FALSE}
 ggplot(data = variants, aes(x = POS, y = DP, color = sample_id)) +
