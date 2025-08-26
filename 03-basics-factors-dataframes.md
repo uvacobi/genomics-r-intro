@@ -160,8 +160,7 @@ but case you run into an unconventional separator you are now equipped with the 
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-Now, let's read in the file `combined_tidy_vcf.csv` which will be located in
-`/home/dcuser/r_data/`. Call this data `variants`. The
+Now, let's read in the file `combined_tidy_vcf.csv` that we copied into the `day 2` folder (where we should be). Call this data `variants`. The
 first argument to pass to our `read.csv()` function is the file path for our
 data. The file path must be in quotes and now is a good time to remember to
 use tab autocompletion. **If you use tab autocompletion you avoid typos and
@@ -171,17 +170,10 @@ errors in file paths.** Use it!
 ``` r
 ## read in a CSV file and save it as 'variants'
 
-variants <- read.csv("/home/dcuser/r_data/combined_tidy_vcf.csv")
+variants <- read.csv("combined_tidy_vcf.csv")
 ```
 
 
-
-One of the first things you should notice is that in the Environment window,
-you have the `variants` object, listed as 801 obs. (observations/rows)
-of 29 variables (columns). Double-clicking on the name of the object will open
-a view of the data in a new tab.
-
-![RStudio data frame view](fig/rstudio_dataframeview.png)
 
 We can also quickly query the dimensions of the variable using `dim()`. You'll see that the first number `801` shows the number of rows, then `29` the number of columns
 
@@ -677,8 +669,7 @@ to understand how to manipulate factors.
 Packages are simply collections of functions and/or data that can be used to extend the
 capabilities of R beyond the core functionality that comes with it by default. The default set of functions and packages that come 'in the box' when you install R for the first time on a given computer are called 'base R'. However, one of the major benefits of using an open source programming language is that there are thousands of useful R packages freely available that span all types of statistical analysis, data visualization,
 and more. The main place that these additional R packages are made available is from a website called the Comprehensive R Archive Network ([CRAN](https://cran.r-project.org/)).  When you use the built-in R function `install.packages()`,
-it will look on CRAN for the package and install it on your computer. So, for example, to install packages such as `dplyr` and `ggplot2`
-(which you'll do in the next few lessons), you would use the following command:
+it will look on CRAN for the package and install it on your computer. So, for example, to install packages such as `dplyr` and `ggplot2`, you would use the following command:
 
 
 ``` r
@@ -693,7 +684,7 @@ These packages will be installed into "~/work/genomics-r-intro/genomics-r-intro/
 
 # Installing packages --------------------------------------------------------
 - Installing ggplot2 ...                        OK [linked from cache]
-Successfully installed 1 package in 4.9 milliseconds.
+Successfully installed 1 package in 5.2 milliseconds.
 ```
 
 ``` r
@@ -707,10 +698,10 @@ These packages will be installed into "~/work/genomics-r-intro/genomics-r-intro/
 
 # Installing packages --------------------------------------------------------
 - Installing dplyr ...                          OK [linked from cache]
-Successfully installed 1 package in 4 milliseconds.
+Successfully installed 1 package in 4.3 milliseconds.
 ```
 
-These two packages are among the most popular add on packages used in R, and they are part of a large set of very useful packages called the [tidyverse](https://www.tidyverse.org). Packages in the tidyverse are designed to work well together and are made to work with tidy data (which we described earlier in this lesson).
+These two packages are among the most popular add on packages used in R, and they are part of a large set of very useful packages called the [tidyverse](https://www.tidyverse.org). Packages in the tidyverse are designed to work well together and are made to work with tidy data (which we described earlier in this lesson). For these lessons, we have installed the packages for you, so you will not have to do this, but you might have to install packages for your own research later !!!
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -1331,7 +1322,7 @@ Lets summarize this section on coercion with a few take home messages.
 
 ## Tip: coercion isn't limited to data frames
 
-Prior to R 4.0 when importing a data frame using any one of the `read.table()`
+Prior to R 4.0 (we are using R 4.4.1)  when importing a data frame using any one of the `read.table()`
 functions such as `read.csv()` , the argument `StringsAsFactors` was by
 default
 set to true TRUE. Setting it to FALSE will treat any non-numeric column to
@@ -1433,7 +1424,7 @@ to a .csv file using the `write.csv()` function:
 
 
 ``` r
-write.csv(SRR2584863_variants, file = "data/SRR2584863_variants.csv")
+write.csv(SRR2584863_variants, file = "SRR2584863_variants.csv")
 ```
 
 The `write.csv()` function has some additional arguments listed in the help, but
@@ -1450,39 +1441,10 @@ away. Sometimes you may not be able to do this (imagine you have data in 300
 Excel files, are you going to open and export all of them?).
 
 One common R package (a set of code with features you can download and add to
-your R installation) is the [readxl package](https://CRAN.R-project.org/package=readxl) which can open and import Excel
-files. Rather than addressing package installation this second (we'll discuss this soon!), we can take
-advantage of RStudio's import feature which integrates this package. (Note:
-this feature is available only in the latest versions of RStudio such as is
-installed on our cloud instance).
-
-First, in the RStudio menu go to **File**, select **Import Dataset**, and
-choose **From Excel...** (notice there are several other options you can
-explore).
-
-![RStudio import menu](fig/rstudio_import_menu.png)
-
-Next, under **File/Url:** click the <KBD>Browse</KBD> button and navigate to the **Ecoli\_metadata.xlsx** file located at `/home/dcuser/dc_sample_data/R`.
-You should now see a preview of the data to be imported:
-
-![RStudio import screen](fig/rstudio_import_screen.png)
-
-Notice that you have the option to change the data type of each variable by
-clicking arrow (drop-down menu) next to each column title. Under **Import
-Options** you may also rename the data, choose a different sheet to import, and
-choose how you will handle headers and skipped rows. Under **Code Preview** you
-can see the code that will be used to import this file. We could have written
-this code and imported the Excel file without the RStudio import function, but
-now you can choose your preference.
-
-In this exercise, we will leave the title of the data frame as
-**Ecoli\_metadata**, and there are no other options we need to adjust. Click the
-<KBD>Import</KBD> button to import the data.
-
-Finally, let's check the first few lines of the `Ecoli_metadata` data
-frame:
+your R installation) is the [readxl package](https://CRAN.R-project.org/package=readxl) which can open and import Excel files. 
 
 
+Let's check the first few lines of the `Ecoli_metadata` data frame:
 
 
 ``` r
