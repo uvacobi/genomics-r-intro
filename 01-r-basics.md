@@ -188,10 +188,8 @@ Here are some important details about naming objects in R.
   or even yourself a year from now). Also, avoiding excessively long names will
   make your code more readable.
 - **Avoid commonly used names**: There are several names that may already have a
-  definition in the R language (e.g. 'mean', 'min', 'max'). One clue that a name
-  already has meaning is that if you start typing a name in RStudio and it gets
-  a colored highlight or RStudio gives you a suggested autocompletion you have
-  chosen a name that has a reserved meaning.
+  definition in the R language (e.g. 'mean', 'min', 'max'). Using them can have
+  unintended consequences.
 - **Use the recommended assignment operator**: In R, we use '\<- ' as the
   preferred assignment operator, which is recommended by the Tidyverse 
   [style guide](https://style.tidyverse.org/) discussed above. '=' works too, but is most 
