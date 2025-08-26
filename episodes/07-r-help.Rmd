@@ -15,7 +15,7 @@ source: Rmd
 
 :::::::::::::::::::::::::::::::::::::::: questions
 
-- How do I get help using R and RStudio?
+- How do I get help using R?
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -155,15 +155,6 @@ they come up commonly:
 
 In the output above, `[81]` indicates that the first value on that line is the
 81st item in your result
-
-**Can I run my R script without RStudio?**
-
-- Yes, remember - RStudio is running R. You get to use lots of the enhancements
-  RStudio provides, but R works independent of RStudio. See [these tips](https://support.rstudio.com/hc/en-us/articles/218012917-How-to-run-R-scripts-from-the-command-line) for running your commands at the command line
-
-**Where else can I learn about RStudio?**
-
-- Check out the <KBD>Help</KBD> menu, especially "Cheatsheets" section
 
 :::::::::::::::::::::::::::::::::::::::: keypoints
 
