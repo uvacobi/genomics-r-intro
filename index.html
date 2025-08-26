@@ -207,9 +207,7 @@
 
     <div id="flush-collapsecurrent" class="accordion-collapse collapse show" aria-labelledby="flush-headingcurrent" data-bs-parent="#accordionFlushcurrent">
       <div class="accordion-body">
-        <ul><li><a href="#r-genomics-workshop-setup-directions">R Genomics workshop setup directions</a></li>
-<li><a href="#installing-r">Installing R</a></li>
-<li><a href="#installing-rstudio">Installing RStudio</a></li>
+        <ul><li><a href="#r-genomics-workshop-setup-directions">R Genomics Workshop Setup Directions</a></li>
         </ul></div><!--/div.accordion-body-->
     </div><!--/div.accordion-collapse-->
 
@@ -393,93 +391,90 @@ researcher, you need to employ all of your training in the bench or
 field to working with analyses. Evaluate results critically, and don’t
 expect that things will always work the first time, or that they will
 always work in the same way.</li>
-<li>
-<strong>Genomics Data Carpentry Instance</strong>: This lesson
-assumes you are using a Genomics Data Carpentry instance as described on
-the <a href="https://www.datacarpentry.org/genomics-workshop/setup.html" class="external-link">Genomics
-Workshop setup page</a>
-</li>
 </ul></div>
 </div>
 </div>
 
 
-      <section id="setup"><p>This lesson is an additional lesson to <a href="https://datacarpentry.org/genomics-workshop/" class="external-link">the genomics
-workshop</a>. Below, is a detailed setup instructions for the main
-workshop which can also be found on <a href="https://datacarpentry.org/genomics-workshop/setup.html" class="external-link">the main
-setup page</a>. If you are only here for the Intro to R and RStudio for
-Genomics lesson, and do not wish to work on the cloud, you can go for
-option B below where you will only need to <a href="https://figshare.com/articles/Data_Carpentry_Genomics_beta_2_0/7726454" class="external-link">download
-the data files</a> to your local working directory where you will create
-the r-project in.</p>
-<section><h2 class="section-heading" id="r-genomics-workshop-setup-directions">R Genomics workshop setup directions<a class="anchor" aria-label="anchor" href="#r-genomics-workshop-setup-directions"></a></h2>
-<hr class="half-width"><p>For general setup for the genomics lessons, see that page of <a href="https://datacarpentry.org/genomics-workshop/" class="external-link">the genomics
-workshop</a>.</p>
-</section><section><h2 class="section-heading" id="installing-r">Installing R<a class="anchor" aria-label="anchor" href="#installing-r"></a></h2>
-<hr class="half-width"><p>This workshop is designed to be run on pre-imaged Amazon Web Services
-(AWS) instances. With the exception of a spreadsheet program, all of the
-software and data used in the workshop are hosted on an Amazon. However,
-it is beneficial to understand how to install both R and RStudio locally
-(on your own machine).</p>
-<p>Typically we suggest you install R for your operating instructions
-from Comprehensive R Archive Network (CRAN) at <a href="https://cran.r-project.org/" class="external-link">this page</a>.</p>
-<div id="accordionSpoiler1" class="accordion spoiler-accordion accordion-flush">
-<div class="accordion-item">
-<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler1" aria-expanded="false" aria-controls="collapseSpoiler1">
-  <h3 class="accordion-header" id="headingSpoiler1">
-  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div>
-  Windows
-  </h3>
-</button>
-<div id="collapseSpoiler1" class="accordion-collapse collapse" aria-labelledby="headingSpoiler1" data-bs-parent="#accordionSpoiler1">
-<div class="accordion-body">
-<p>Follow the CRAN instructions for downloading the <a href="https://cran.r-project.org/bin/windows/base/" class="external-link">Windows
-Binary</a></p>
+      <section id="setup"><section><h2 class="section-heading" id="r-genomics-workshop-setup-directions">R Genomics Workshop Setup Directions<a class="anchor" aria-label="anchor" href="#r-genomics-workshop-setup-directions"></a></h2>
+<hr class="half-width"><div class="section level3">
+<h3 id="logging-into-rivannaafton">Logging into Rivanna/Afton<a class="anchor" aria-label="anchor" href="#logging-into-rivannaafton"></a></h3>
+<p>To log into the Rivanna or Afton HPC cluster, open your terminal (or
+<strong>MobaXterm</strong> if you are on Windows).</p>
+<ul><li>On <strong>macOS Catalina or later</strong>, the default shell is
+<strong>Zsh</strong>. To temporarily switch to <strong>Bash</strong>,
+open Terminal, type:</li>
+</ul><div class="codewrapper sourceCode" id="cb1">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">bash</span></span></code></pre>
 </div>
+<p>and press <kbd>Return</kbd>. This switches your shell to Bash for the
+current session.</p>
+<p>Once you have your terminal open, connect to the HPC cluster by
+typing:</p>
+<div class="codewrapper sourceCode" id="cb2">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="fu">ssh</span> <span class="at">-Y</span> uva_compute_id@login.hpc.virginia.edu</span></code></pre>
 </div>
+<p>Replace <code>uva_compute_id</code> with your UVA computing ID in the
+above command. You will then be prompted to enter your UVA NetBadge
+password. This command securely connects you to the HPC cluster.</p>
 </div>
+<div class="section level3">
+<h3 id="workspace-for-this-lesson">Workspace for This Lesson<a class="anchor" aria-label="anchor" href="#workspace-for-this-lesson"></a></h3>
+<p>First, make sure you are in your home directory. In the terminal,
+type:</p>
+<div class="codewrapper sourceCode" id="cb3">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="bu">cd</span></span></code></pre>
 </div>
-<div id="accordionSpoiler2" class="accordion spoiler-accordion accordion-flush">
-<div class="accordion-item">
-<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler2" aria-expanded="false" aria-controls="collapseSpoiler2">
-  <h3 class="accordion-header" id="headingSpoiler2">
-  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div>
-  Mac OS X
-  </h3>
-</button>
-<div id="collapseSpoiler2" class="accordion-collapse collapse" aria-labelledby="headingSpoiler2" data-bs-parent="#accordionSpoiler2">
-<div class="accordion-body">
-<p>Follow the CRAN instructions for downloading the <a href="https://cran.r-project.org/bin/macosx/" class="external-link">MacOS .pkg file</a>;
-ensure that you download the package that corresponds to your Mac CPU
-configuration (e.g. “For Apple silicon (M1/M2) Macs” or “For older Intel
-Macs”).</p>
+<p>and press <kbd>Return</kbd>. (The cd command changes your location.
+With no arguments, it takes you back to your home directory.)</p>
+<p>Next, create a new directory called day2 where you will do your
+work:</p>
+<div class="codewrapper sourceCode" id="cb4">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="fu">mkdir</span> day2</span></code></pre>
 </div>
+<p>and press <kbd>Return</kbd>. (The mkdir command makes a new folder
+named day2.)</p>
+<p>Move into this directory:</p>
+<pre><code>cd day2</code></pre>
+<p>and press <kbd>Return</kbd>. (Now you are “inside” the day2 folder,
+and any files you create will be saved here.)</p>
+<p>To confirm you are in the correct location, type:</p>
+<div class="codewrapper sourceCode" id="cb6">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="bu">pwd</span></span></code></pre>
 </div>
+<p>and press <kbd>Return</kbd>. (The pwd command prints your current
+working directory, i.e., the folder you are in.)</p>
+<p>The output should look like:</p>
+<pre><code>/home/your_computing_id/day2</code></pre>
+<p>with your own computing ID in place of
+<code>your_computing_id</code>.</p>
 </div>
+<div class="section level3">
+<h3 id="data-for-this-lesson">Data for This Lesson<a class="anchor" aria-label="anchor" href="#data-for-this-lesson"></a></h3>
+<p>The data for today’s lesson is stored in
+<code>/standard/bims6000/r_day2</code>.</p>
+<p>Let’s copy the file into your working directory so you have your own
+copy. Run:</p>
+<div class="codewrapper sourceCode" id="cb8">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="fu">cp</span> /standard/bims6000/r_day2/combined_tidy_vcf.csv .</span></code></pre>
 </div>
-<div id="accordionSpoiler3" class="accordion spoiler-accordion accordion-flush">
-<div class="accordion-item">
-<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler3" aria-expanded="false" aria-controls="collapseSpoiler3">
-  <h3 class="accordion-header" id="headingSpoiler3">
-  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div>
-  Linux
-  </h3>
-</button>
-<div id="collapseSpoiler3" class="accordion-collapse collapse" aria-labelledby="headingSpoiler3" data-bs-parent="#accordionSpoiler3">
-<div class="accordion-body">
-<p>Follow the CRAN instructions for your <a href="https://cran.r-project.org/bin/linux/" class="external-link">Linux Distribution</a>; The
-instructions for Ubuntu are <a href="https://cran.r-project.org/bin/linux/ubuntu/" class="external-link">found here</a>.</p>
+<p>and press <kbd>Return</kbd>. The cp command copies files. Here, it
+copies the file <code>combined_tidy_vcf.csv</code> from the shared class
+folder into your current directory, day2. The . means “put it
+here.”)</p>
 </div>
-</div>
-</div>
-</div>
-</section><section><h2 class="section-heading" id="installing-rstudio">Installing RStudio<a class="anchor" aria-label="anchor" href="#installing-rstudio"></a></h2>
-<hr class="half-width"><p>The RStudio integrated development environment (IDE) is a popular way
-to use R. We will cover what RStudio is in the lesson. All operating
-systems can go to the Posit LLC <a href="https://posit.co/download/rstudio-desktop/" class="external-link">download pages</a> to
-download the appropriate version for their operating system. In most
-cases, the Posit website will detect your operating system and suggest
-the correct download. This same page will link to alternatives.</p>
 </section></section></main><nav class="bottom-pagination mx-md-4" aria-label="Next Chapter"><!-- content for small screens --><div class="d-block d-sm-block d-md-none">
         <a class="chapter-link float-end" href="00-introduction.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
       </div>
