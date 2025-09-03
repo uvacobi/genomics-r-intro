@@ -208,6 +208,7 @@
     <div id="flush-collapsecurrent" class="accordion-collapse collapse show" aria-labelledby="flush-headingcurrent" data-bs-parent="#accordionFlushcurrent">
       <div class="accordion-body">
         <ul><li><a href="#r-genomics-workshop-setup-directions">R Genomics Workshop Setup Directions</a></li>
+<li><a href="#logging-into-rivannaafton">Logging into Rivanna/Afton</a></li>
         </ul></div><!--/div.accordion-body-->
     </div><!--/div.accordion-collapse-->
 
@@ -397,48 +398,73 @@ always work in the same way.</li>
 
 
       <section id="setup"><section><h2 class="section-heading" id="r-genomics-workshop-setup-directions">R Genomics Workshop Setup Directions<a class="anchor" aria-label="anchor" href="#r-genomics-workshop-setup-directions"></a></h2>
-<hr class="half-width"><div class="section level3">
-<h3 id="logging-into-rivannaafton">Logging into Rivanna/Afton<a class="anchor" aria-label="anchor" href="#logging-into-rivannaafton"></a></h3>
-<p>To log into the Rivanna or Afton HPC cluster, open your terminal (or
-<strong>MobaXterm</strong> if you are on Windows).</p>
-<ul><li>On <strong>macOS Catalina or later</strong>, the default shell is
-<strong>Zsh</strong>. To temporarily switch to <strong>Bash</strong>,
-open Terminal, type:</li>
-</ul><div class="codewrapper sourceCode" id="cb1">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">bash</span></span></code></pre>
+<hr class="half-width"></section><section><h2 class="section-heading" id="logging-into-rivannaafton">Logging into Rivanna/Afton<a class="anchor" aria-label="anchor" href="#logging-into-rivannaafton"></a></h2>
+<hr class="half-width"><p>To log into the Rivanna or Afton HPC cluster, start by visiting the
+<strong>HPC Login Instructions</strong> page:<br><a href="https://www.rc.virginia.edu/userinfo/hpc/login/" class="external-link">https://www.rc.virginia.edu/userinfo/hpc/login/</a></p>
+<p>You can either follow the instructions for <strong>Web-based
+Access</strong>, or the <strong>Secure Shell Access (SSH)</strong></p>
+<div class="section level3">
+<h3 id="web-based-access">Web-based Access<a class="anchor" aria-label="anchor" href="#web-based-access"></a></h3>
+<p>For web-based access, scroll down to the <strong>Web-based
+Access</strong>, and click on ``Launch Open OnDemand’’. Log on using
+your UVA credentials (uva_compute_id and Netbadge password). You now
+have point and click access to your account on UVA’s HPC!. 8. Click on
+“&gt;_ Open in Terminal” on the upper left of the screen. 9. This will
+open a UNIX terminal on your web browser.</p>
 </div>
-<p>and press <kbd>Return</kbd>. This switches your shell to Bash for the
-current session.</p>
-<p>Once you have your terminal open, connect to the HPC cluster by
+<div class="section level3">
+<h3 id="secure-shell-access-ssh">Secure Shell Access (SSH)<a class="anchor" aria-label="anchor" href="#secure-shell-access-ssh"></a></h3>
+<p>UVA HPC is accessible through ssh (Secure Shell) connections. Follow
+the instructions for Secure Shell Access (SSH) based on your operating
+system:</p>
+<ul><li>
+<strong>Windows</strong>: Install the recommended SSH client,
+<strong>MobaXterm</strong>, by clicking the <em>Install MobaXterm</em>
+button under the Windows section of the page and following the
+instructions.<br></li>
+<li>
+<strong>macOS</strong>: Open the <strong>Terminal</strong>
+application, located in the <em>Utilities</em> folder.
+<ul><li>On macOS Mojave and earlier, the default shell is
+<strong>Bash</strong>.<br></li>
+<li>On macOS Catalina and later, the default shell is
+<strong>Zsh</strong>. To temporarily switch to Bash, open Terminal, type
+<code>bash</code>, and press <kbd>Return</kbd>.<br></li>
+</ul></li>
+<li>
+<strong>Linux</strong>: Most Linux systems use <strong>Bash</strong>
+as the default shell. Open a terminal using the Applications menu or
+search bar (look for <strong>Terminal</strong>,
+<strong>Konsole</strong>, or <strong>xterm</strong>). If your system
+defaults to another shell, you can switch by typing <code>bash</code>
+and pressing <kbd>Return</kbd>.</li>
+</ul><p>Once you have a terminal open, connect to the HPC cluster by
 typing:</p>
-<div class="codewrapper sourceCode" id="cb2">
+<div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="fu">ssh</span> <span class="at">-Y</span> uva_compute_id@login.hpc.virginia.edu</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">ssh</span> <span class="at">-Y</span> uva_compute_id@login.hpc.virginia.edu</span></code></pre>
 </div>
-<p>Replace <code>uva_compute_id</code> with your UVA computing ID in the
-above command. You will then be prompted to enter your UVA NetBadge
-password. This command securely connects you to the HPC cluster.</p>
+<p>Replace <code>uva_compute_id</code> with your UVA computing ID. You
+will then be prompted to enter your UVA NetBadge password.</p>
 </div>
 <div class="section level3">
 <h3 id="workspace-for-this-lesson">Workspace for This Lesson<a class="anchor" aria-label="anchor" href="#workspace-for-this-lesson"></a></h3>
 <p>First, make sure you are in your home directory. In the terminal,
 type:</p>
-<div class="codewrapper sourceCode" id="cb3">
+<div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="bu">cd</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="bu">cd</span></span></code></pre>
 </div>
 <p>and press <kbd>Return</kbd>. (The cd command changes your location.
 With no arguments, it takes you back to your home directory.)</p>
 <p>Next, create a new directory called day2 where you will do your
 work:</p>
-<div class="codewrapper sourceCode" id="cb4">
+<div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="fu">mkdir</span> day2</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="fu">mkdir</span> day2</span></code></pre>
 </div>
 <p>and press <kbd>Return</kbd>. (The mkdir command makes a new folder
 named day2.)</p>
@@ -447,10 +473,10 @@ named day2.)</p>
 <p>and press <kbd>Return</kbd>. (Now you are “inside” the day2 folder,
 and any files you create will be saved here.)</p>
 <p>To confirm you are in the correct location, type:</p>
-<div class="codewrapper sourceCode" id="cb6">
+<div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="bu">pwd</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="bu">pwd</span></span></code></pre>
 </div>
 <p>and press <kbd>Return</kbd>. (The pwd command prints your current
 working directory, i.e., the folder you are in.)</p>
@@ -465,10 +491,10 @@ working directory, i.e., the folder you are in.)</p>
 <code>/standard/bims6000/r_day2</code>.</p>
 <p>Let’s copy the file into your working directory so you have your own
 copy. Run:</p>
-<div class="codewrapper sourceCode" id="cb8">
+<div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="fu">cp</span> /standard/bims6000/r_day2/combined_tidy_vcf.csv .</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="fu">cp</span> /standard/bims6000/r_day2/combined_tidy_vcf.csv .</span></code></pre>
 </div>
 <p>and press <kbd>Return</kbd>. The cp command copies files. Here, it
 copies the file <code>combined_tidy_vcf.csv</code> from the shared class
