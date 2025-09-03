@@ -135,27 +135,9 @@ Hint: look at for a function called `contains()`, which can be found in the help
 ``` r
 # First, we select "POS" and all columns with letter "i". This will contain columns Indiv and FILTER. 
 variants_subset <- select(variants, POS, contains("i"))
-```
-
-``` error
-Error: object 'variants' not found
-```
-
-``` r
 # Next, we remove columns Indiv and FILTER
 variants_result <- select(variants_subset, -Indiv, -FILTER)
-```
-
-``` error
-Error: object 'variants_subset' not found
-```
-
-``` r
 variants_result
-```
-
-``` error
-Error: object 'variants_result' not found
 ```
 
 :::::::::::::::::::::::::
@@ -169,18 +151,7 @@ We can also get to `variants_result` in one line of code:
 
 ``` r
 variants_result <- select(variants, POS, contains("i"), -Indiv, -FILTER)
-```
-
-``` error
-Error: object 'variants' not found
-```
-
-``` r
 variants_result
-```
-
-``` error
-Error: object 'variants_result' not found
 ```
 
 :::::::::::::::::::::::::
