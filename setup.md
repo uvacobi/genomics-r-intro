@@ -24,6 +24,7 @@ ssh -Y uva_compute_id@login.hpc.virginia.edu
 
 Replace `uva_compute_id` with your UVA computing ID in the above command. You will then be prompted to enter your UVA NetBadge password. This command securely connects you to the HPC cluster.
 
+
 ### Workspace for This Lesson
 
 First, make sure you are in your home directory. In the terminal, type:
