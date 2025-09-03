@@ -87,11 +87,22 @@ Now let's load our vcf .csv file using `read_csv()`:
 variants <- read_csv("combined_tidy_vcf.csv") 
 ```
 
+``` error
+Error: 'combined_tidy_vcf.csv' does not exist in current working directory ('/home/runner/work/genomics-r-intro/genomics-r-intro/site/built').
+```
+
 ### Taking a quick look at data frames
 
 Similar to `str()`, which comes built into R, `glimpse()` is a `dplyr` function that (as the name suggests) gives a glimpse of the data frame.
 
 
+``` r
+glimpse(variants)
+```
+
+``` error
+Error: object 'variants' not found
+```
 
 In the above output, we can already gather some information about `variants`, such as the number of rows and columns, column names, type of vector in the columns, and the first few entries of each column. Although what we see is similar to outputs of `str()`, this method gives a cleaner visual output.
 
