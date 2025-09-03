@@ -698,7 +698,7 @@ These packages will be installed into "~/work/genomics-r-intro/genomics-r-intro/
 
 # Installing packages --------------------------------------------------------
 - Installing dplyr ...                          OK [linked from cache]
-Successfully installed 1 package in 4.3 milliseconds.
+Successfully installed 1 package in 4.6 milliseconds.
 ```
 
 These two packages are among the most popular add on packages used in R, and they are part of a large set of very useful packages called the [tidyverse](https://www.tidyverse.org). Packages in the tidyverse are designed to work well together and are made to work with tidy data (which we described earlier in this lesson). For these lessons, we have installed the packages for you, so you will not have to do this, but you might have to install packages for your own research later !!!
@@ -1444,6 +1444,12 @@ One common R package (a set of code with features you can download and add to
 your R installation) is the [readxl package](https://CRAN.R-project.org/package=readxl) which can open and import Excel files. 
 
 
+``` r
+## silently read in CSV file from CyVerse
+download.file("https://de.cyverse.org/dl/d/17FAE062-2673-417B-8544-77CC46974A37/Ecoli_metadata.xlsx",
+              destfile = "Ecoli_metadata.xlsx")
+Ecoli_metadata <- readxl::read_xlsx("Ecoli_metadata.xlsx")
+```
 Let's check the first few lines of the `Ecoli_metadata` data frame:
 
 
