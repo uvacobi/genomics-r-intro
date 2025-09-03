@@ -4,25 +4,32 @@ title: Setup
 
 ## R Genomics Workshop Setup Directions
 
-### Logging into Rivanna/Afton
+## Logging into Rivanna/Afton
 
-To log into the Rivanna or Afton HPC cluster, open your terminal (or **MobaXterm** if you are on Windows).  
+To log into the Rivanna or Afton HPC cluster, start by visiting the **HPC Login Instructions** page:  
+[https://www.rc.virginia.edu/userinfo/hpc/login/](https://www.rc.virginia.edu/userinfo/hpc/login/)
 
-- On **macOS Catalina or later**, the default shell is **Zsh**. To temporarily switch to **Bash**, open Terminal, type:
+You can either follow the instructions for **Web-based Access**, or the **Secure Shell Access (SSH)**
 
-```bash
-bash
-```
+### Web-based Access
+For web-based access, scroll down to the **Web-based Access**, and click on ``Launch Open OnDemand''. Log on using your UVA credentials (uva_compute_id and Netbadge password). You now have point and click access to your account on UVA’s HPC!. 8.	Click on ">_ Open in Terminal" on the upper left of the screen. 9.	This will open a UNIX terminal on your web browser.
 
-and press <kbd>Return</kbd>. This switches your shell to Bash for the current session.
+### Secure Shell Access (SSH)
+UVA HPC is accessible through ssh (Secure Shell) connections. Follow the instructions for Secure Shell Access (SSH) based on your operating system:
 
-Once you have your terminal open, connect to the HPC cluster by typing:
+- **Windows**: Install the recommended SSH client, **MobaXterm**, by clicking the *Install MobaXterm* button under the Windows section of the page and following the instructions.  
+- **macOS**: Open the **Terminal** application, located in the *Utilities* folder.  
+  - On macOS Mojave and earlier, the default shell is **Bash**.  
+  - On macOS Catalina and later, the default shell is **Zsh**. To temporarily switch to Bash, open Terminal, type `bash`, and press <kbd>Return</kbd>.  
+- **Linux**: Most Linux systems use **Bash** as the default shell. Open a terminal using the Applications menu or search bar (look for **Terminal**, **Konsole**, or **xterm**). If your system defaults to another shell, you can switch by typing `bash` and pressing <kbd>Return</kbd>.  
+
+Once you have a terminal open, connect to the HPC cluster by typing:
 
 ```bash
 ssh -Y uva_compute_id@login.hpc.virginia.edu
 ```
 
-Replace `uva_compute_id` with your UVA computing ID in the above command. You will then be prompted to enter your UVA NetBadge password. This command securely connects you to the HPC cluster.
+Replace `uva_compute_id` with your UVA computing ID. You will then be prompted to enter your UVA NetBadge password.
 
 
 ### Workspace for This Lesson
