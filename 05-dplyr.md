@@ -83,6 +83,9 @@ The Tidyverse's `readr` package provides its own unique way of loading .csv file
 Now let's load our vcf .csv file using `read_csv()`:
 
 
+``` r
+variants <- read_csv("combined_tidy_vcf.csv") 
+```
 
 ### Taking a quick look at data frames
 
@@ -114,10 +117,6 @@ select(variants, -CHROM)
 
 ``` r
 select(variants, ends_with("B"))
-```
-
-``` error
-Error: object 'variants' not found
 ```
 
 :::::::::::::::::::::::::::::::::::::::  challenge
