@@ -201,28 +201,10 @@ Here are a few examples:
 ``` r
 # rows for which the reference genome has T or G
 filter(variants, REF %in% c("T", "G"))
-```
-
-``` error
-Error: object 'variants' not found
-```
-
-``` r
 # rows that have TRUE in the column INDEL
 filter(variants, INDEL)
-```
-
-``` error
-Error: object 'variants' not found
-```
-
-``` r
 # rows that don't have missing data in the IDV column
 filter(variants, !is.na(IDV))
-```
-
-``` error
-Error: object 'variants' not found
 ```
 
 We have a column titled "QUAL". This is a Phred-scaled confidence
@@ -237,10 +219,6 @@ have a QUAL score above a certain threshold:
 filter(variants, QUAL >= 100)
 ```
 
-``` error
-Error: object 'variants' not found
-```
-
 `filter()` allows you to combine multiple conditions. You can separate them using a `,` as arguments to the function, they will be combined using the `&` (AND) logical operator. If you need to use the `|` (OR) logical operator, you can specify it explicitly:
 
 
@@ -248,19 +226,8 @@ Error: object 'variants' not found
 # this is equivalent to:
 #   filter(variants, sample_id == "SRR2584863" & QUAL >= 100)
 filter(variants, sample_id == "SRR2584863", QUAL >= 100)
-```
-
-``` error
-Error: object 'variants' not found
-```
-
-``` r
 # using `|` logical operator
 filter(variants, sample_id == "SRR2584863", (MQ >= 50 | QUAL >= 100))
-```
-
-``` error
-Error: object 'variants' not found
 ```
 
 :::::::::::::::::::::::::::::::::::::::  challenge
@@ -330,20 +297,12 @@ SRR2584863_variants <- variants %>%
   select(REF, ALT, DP)
 ```
 
-``` error
-Error: object 'variants' not found
-```
-
 This new object includes all of the data from this sample. Let's look at just
 the first six rows to confirm it's what we want:
 
 
 ``` r
 SRR2584863_variants
-```
-
-``` error
-Error: object 'SRR2584863_variants' not found
 ```
 
 Similar to `head()` and `tail()` functions, we can also look at the first or last six rows using tidyverse function `slice()`. Slice is a more versatile function that allows users to specify a range to view:
@@ -353,17 +312,9 @@ Similar to `head()` and `tail()` functions, we can also look at the first or las
 SRR2584863_variants %>% slice(1:6)
 ```
 
-``` error
-Error: object 'SRR2584863_variants' not found
-```
-
 
 ``` r
 SRR2584863_variants %>% slice(10:25)
-```
-
-``` error
-Error: object 'SRR2584863_variants' not found
 ```
 
 :::::::::::::::::::::::::::::::::::::::  challenge
@@ -385,10 +336,6 @@ Showing only 5th through 11th rows of columns `REF`, `ALT`, and `POS`.
  filter(sample_id == "SRR2584863" & DP >= 10) %>%
  slice(5:11) %>%
  select(sample_id, DP, REF, ALT, POS)
-```
-
-``` error
-Error: object 'variants' not found
 ```
 
 :::::::::::::::::::::::::
@@ -415,10 +362,6 @@ variants %>%
   mutate(POLPROB = 1 - (10 ^ -(QUAL/10)))
 ```
 
-``` error
-Error: object 'variants' not found
-```
-
 :::::::::::::::::::::::::::::::::::::::  challenge
 
 ## Exercise
@@ -436,10 +379,6 @@ line to the above code to only show those columns.
 variants %>%
  mutate(POLPROB = 1 - 10 ^ -(QUAL/10)) %>%
  select(sample_id, POS, QUAL, POLPROB)
-```
-
-``` error
-Error: object 'variants' not found
 ```
 
 :::::::::::::::::::::::::
@@ -463,20 +402,12 @@ variants %>%
   tally()
 ```
 
-``` error
-Error: object 'variants' not found
-```
-
 Since counting or tallying values is a common use case for `group_by()`, an alternative function was created to bypasses `group_by()` using the function `count()`:
 
 
 ``` r
 variants %>%
   count(sample_id)
-```
-
-``` error
-Error: object 'variants' not found
 ```
 
 :::::::::::::::::::::::::::::::::::::::  challenge
@@ -493,10 +424,6 @@ Error: object 'variants' not found
 ``` r
 variants %>%
   count(INDEL)
-```
-
-``` error
-Error: object 'variants' not found
 ```
 
 :::::::::::::::::::::::::
@@ -537,10 +464,6 @@ variants %>%
     min_DP = min(DP),
     max_DP = max(DP))
 ```
-
-``` error
-Error: object 'variants' not found
-```
 :::::::::::::::::::::::::::::::::::::::::  callout
 ## Grouped Data Frames in Tidyverse
 
@@ -565,18 +488,7 @@ variants_wide <- variants %>%
   group_by(sample_id, CHROM) %>%
   summarize(mean_DP = mean(DP)) %>%
   pivot_wider(names_from = sample_id, values_from = mean_DP)
-```
-
-``` error
-Error: object 'variants' not found
-```
-
-``` r
 variants_wide
-```
-
-``` error
-Error: object 'variants_wide' not found
 ```
 
 The opposite operation of `pivot_wider()` is taken care by `pivot_longer()`. We specify the names of the new columns, and here add `-CHROM` as this column shouldn't be affected by the reshaping:
@@ -585,10 +497,6 @@ The opposite operation of `pivot_wider()` is taken care by `pivot_longer()`. We 
 ``` r
 variants_wide %>%
   pivot_longer(-CHROM, names_to = "sample_id", values_to = "mean_DP")
-```
-
-``` error
-Error: object 'variants_wide' not found
 ```
 
 ### Resources
