@@ -82,7 +82,7 @@ The Tidyverse's `readr` package provides its own unique way of loading .csv file
 
 Now let's load our vcf .csv file using `read_csv()`:
 
-```{r, include=TRUE, echo=TRUE, eval=FALSE, purl=FALSE}
+```{r, include=TRUE, echo=TRUE, eval=TRUE, purl=FALSE}
 variants <- read_csv("combined_tidy_vcf.csv") 
 ```
 
@@ -90,7 +90,7 @@ variants <- read_csv("combined_tidy_vcf.csv")
 
 Similar to `str()`, which comes built into R, `glimpse()` is a `dplyr` function that (as the name suggests) gives a glimpse of the data frame.
 
-```{r, echo=FALSE, eval=FALSE, purl=FALSE}
+```{r, echo=TRUE, eval=TRUE, purl=FALSE}
 glimpse(variants)
 ```
 
