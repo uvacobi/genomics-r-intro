@@ -163,7 +163,7 @@ filter(variants, sample_id == "SRR2584863")
 `filter()` will keep all the rows that match the conditions that are provided.
 Here are a few examples:
 
-```{r}
+```{r, eval=FALSE}
 # rows for which the reference genome has T or G
 filter(variants, REF %in% c("T", "G"))
 # rows that have TRUE in the column INDEL
@@ -178,14 +178,14 @@ data. Lower QUAL scores indicate low probability of a polymorphism
 existing at that site. `filter()` can be useful for selecting mutations that
 have a QUAL score above a certain threshold:
 
-```{r}
+```{r, eval=FALSE}
 # rows with QUAL values greater than or equal to 100
 filter(variants, QUAL >= 100)
 ```
 
 `filter()` allows you to combine multiple conditions. You can separate them using a `,` as arguments to the function, they will be combined using the `&` (AND) logical operator. If you need to use the `|` (OR) logical operator, you can specify it explicitly:
 
-```{r}
+```{r, eval=FALSE}
 # this is equivalent to:
 #   filter(variants, sample_id == "SRR2584863" & QUAL >= 100)
 filter(variants, sample_id == "SRR2584863", QUAL >= 100)
@@ -247,7 +247,7 @@ more complex manipulations of data frames.
 If we want to create a new object with this smaller version of the data we
 can do so by assigning it a new name:
 
-```{r, purl=FALSE}
+```{r, purl=FALSE, eval=FALSE}
 SRR2584863_variants <- variants %>%
   filter(sample_id == "SRR2584863") %>%
   select(REF, ALT, DP)
@@ -256,17 +256,17 @@ SRR2584863_variants <- variants %>%
 This new object includes all of the data from this sample. Let's look at just
 the first six rows to confirm it's what we want:
 
-```{r, purl=FALSE}
+```{r, purl=FALSE, eval=FALSE}
 SRR2584863_variants
 ```
 
 Similar to `head()` and `tail()` functions, we can also look at the first or last six rows using tidyverse function `slice()`. Slice is a more versatile function that allows users to specify a range to view:
 
-```{r}
+```{r, eval=FALSE}
 SRR2584863_variants %>% slice(1:6)
 ```
 
-```{r}
+```{r, eval=FALSE}
 SRR2584863_variants %>% slice(10:25)
 ```
 
@@ -283,7 +283,7 @@ Showing only 5th through 11th rows of columns `REF`, `ALT`, and `POS`.
 
 ## Solution
 
-```{r}
+```{r, eval=FALSE}
  variants %>%
  filter(sample_id == "SRR2584863" & DP >= 10) %>%
  slice(5:11) %>%
@@ -308,7 +308,7 @@ Probability = 1- 10 ^ -(QUAL/10)
 We can use `mutate` to add a column (`POLPROB`) to our `variants` data frame that shows
 the probability of a polymorphism at that site given the data.
 
-```{r, purl=FALSE}
+```{r, purl=FALSE, eval=FALSE}
 variants %>%
   mutate(POLPROB = 1 - (10 ^ -(QUAL/10)))
 ```
@@ -325,7 +325,7 @@ line to the above code to only show those columns.
 
 ## Solution
 
-```{r}
+```{r, eval=FALSE}
 variants %>%
  mutate(POLPROB = 1 - 10 ^ -(QUAL/10)) %>%
  select(sample_id, POS, QUAL, POLPROB)
@@ -345,7 +345,7 @@ then combine the results. `dplyr` makes this very easy through the use of the
 We can use `group_by()` to tally the number of mutations detected in each sample
 using the function `tally()`:
 
-```{r, purl=FALSE, message=FALSE}
+```{r, purl=FALSE, eval=FALSE, message=FALSE}
 variants %>%
   group_by(sample_id) %>%
   tally()
@@ -353,7 +353,7 @@ variants %>%
 
 Since counting or tallying values is a common use case for `group_by()`, an alternative function was created to bypasses `group_by()` using the function `count()`:
 
-```{r, purl=FALSE, message=FALSE}
+```{r, purl=FALSE, message=FALSE, eval=FALSE}
 variants %>%
   count(sample_id)
 ```
@@ -368,7 +368,7 @@ variants %>%
 
 ## Solution
 
-```{r}
+```{r, eval=FALSE}
 variants %>%
   count(INDEL)
 ```
@@ -401,7 +401,7 @@ to use `na.rm = TRUE` (`rm` stands for remove).
 
 So to view the mean, median, maximum, and minimum filtered depth (`DP`) for each sample:
 
-```{r, purl=FALSE, message=FALSE}
+```{r, purl=FALSE, eval=FALSE, message=FALSE}
 variants %>%
   group_by(sample_id) %>%
   summarize(
@@ -428,7 +428,7 @@ It can sometimes be useful to transform the "long" tidy format, into the wide fo
 
 `pivot_wider()` takes a data frame as the first argument, and two arguments: the column name that will become the columns  and the column name that will become the cells in the wide data.
 
-```{r}
+```{r, eval=FALSE}
 variants_wide <- variants %>%
   group_by(sample_id, CHROM) %>%
   summarize(mean_DP = mean(DP)) %>%
@@ -438,7 +438,7 @@ variants_wide
 
 The opposite operation of `pivot_wider()` is taken care by `pivot_longer()`. We specify the names of the new columns, and here add `-CHROM` as this column shouldn't be affected by the reshaping:
 
-```{r}
+```{r, eval=FALSE}
 variants_wide %>%
   pivot_longer(-CHROM, names_to = "sample_id", values_to = "mean_DP")
 ```
