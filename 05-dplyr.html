@@ -531,35 +531,10 @@ Note that contains() is not case sensistive.</p>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># First, we select "POS" and all columns with letter "i". This will contain columns Indiv and FILTER. </span></span>
-<span><span class="va">variants_subset</span> <span class="op">&lt;-</span> <span class="fu">select</span><span class="op">(</span><span class="va">variants</span>, <span class="va">POS</span>, <span class="fu">contains</span><span class="op">(</span><span class="st">"i"</span><span class="op">)</span><span class="op">)</span></span></code></pre>
-</div>
-<div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="error" tabindex="0"><code>Error: object 'variants' not found</code></pre>
-</div>
-<div class="codewrapper sourceCode" id="cb8">
-<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Next, we remove columns Indiv and FILTER</span></span>
-<span><span class="va">variants_result</span> <span class="op">&lt;-</span> <span class="fu">select</span><span class="op">(</span><span class="va">variants_subset</span>, <span class="op">-</span><span class="va">Indiv</span>, <span class="op">-</span><span class="va">FILTER</span><span class="op">)</span></span></code></pre>
-</div>
-<div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="error" tabindex="0"><code>Error: object 'variants_subset' not found</code></pre>
-</div>
-<div class="codewrapper sourceCode" id="cb10">
-<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">variants_result</span></span></code></pre>
-</div>
-<div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="error" tabindex="0"><code>Error: object 'variants_result' not found</code></pre>
+<span><span class="va">variants_subset</span> <span class="op">&lt;-</span> <span class="fu">select</span><span class="op">(</span><span class="va">variants</span>, <span class="va">POS</span>, <span class="fu">contains</span><span class="op">(</span><span class="st">"i"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co"># Next, we remove columns Indiv and FILTER</span></span>
+<span><span class="va">variants_result</span> <span class="op">&lt;-</span> <span class="fu">select</span><span class="op">(</span><span class="va">variants_subset</span>, <span class="op">-</span><span class="va">Indiv</span>, <span class="op">-</span><span class="va">FILTER</span><span class="op">)</span></span>
+<span><span class="va">variants_result</span></span></code></pre>
 </div>
 </div>
 </div>
@@ -586,34 +561,19 @@ code:</p>
 </button>
 <div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
-<div class="codewrapper sourceCode" id="cb12">
+<div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">variants_result</span> <span class="op">&lt;-</span> <span class="fu">select</span><span class="op">(</span><span class="va">variants</span>, <span class="va">POS</span>, <span class="fu">contains</span><span class="op">(</span><span class="st">"i"</span><span class="op">)</span>, <span class="op">-</span><span class="va">Indiv</span>, <span class="op">-</span><span class="va">FILTER</span><span class="op">)</span></span></code></pre>
-</div>
-<div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="error" tabindex="0"><code>Error: object 'variants' not found</code></pre>
-</div>
-<div class="codewrapper sourceCode" id="cb14">
-<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">variants_result</span></span></code></pre>
-</div>
-<div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="error" tabindex="0"><code>Error: object 'variants_result' not found</code></pre>
+<code class="sourceCode R"><span><span class="va">variants_result</span> <span class="op">&lt;-</span> <span class="fu">select</span><span class="op">(</span><span class="va">variants</span>, <span class="va">POS</span>, <span class="fu">contains</span><span class="op">(</span><span class="st">"i"</span><span class="op">)</span>, <span class="op">-</span><span class="va">Indiv</span>, <span class="op">-</span><span class="va">FILTER</span><span class="op">)</span></span>
+<span><span class="va">variants_result</span></span></code></pre>
 </div>
 </div>
 </div>
 </div>
 </div>
 <p>To choose rows, use <code>filter()</code>:</p>
-<div class="codewrapper sourceCode" id="cb16">
+<div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -621,7 +581,7 @@ code:</p>
 </div>
 <p><code>filter()</code> will keep all the rows that match the
 conditions that are provided. Here are a few examples:</p>
-<div class="codewrapper sourceCode" id="cb17">
+<div class="codewrapper sourceCode" id="cb9">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -637,7 +597,7 @@ score that a polymorphism exists at this position given the sequencing
 data. Lower QUAL scores indicate low probability of a polymorphism
 existing at that site. <code>filter()</code> can be useful for selecting
 mutations that have a QUAL score above a certain threshold:</p>
-<div class="codewrapper sourceCode" id="cb18">
+<div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -649,7 +609,7 @@ can separate them using a <code>,</code> as arguments to the function,
 they will be combined using the <code>&amp;</code> (AND) logical
 operator. If you need to use the <code>|</code> (OR) logical operator,
 you can specify it explicitly:</p>
-<div class="codewrapper sourceCode" id="cb19">
+<div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -681,7 +641,7 @@ FALSE, we can use to negation symbol “!”. (eg. !TRUE == FALSE).</p>
 </button>
 <div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
-<div class="codewrapper sourceCode" id="cb20">
+<div class="codewrapper sourceCode" id="cb12">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -707,7 +667,7 @@ this before pipes were added to R, but it was much messier and more
 difficult. Pipes in R look like <code>%&gt;%</code> and are made
 available via the <code>magrittr</code> package, which is installed as
 part of <code>dplyr</code>.</p>
-<div class="codewrapper sourceCode" id="cb22">
+<div class="codewrapper sourceCode" id="cb14">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -735,7 +695,7 @@ linear workflows with the pipe, we can accomplish more complex
 manipulations of data frames.</p>
 <p>If we want to create a new object with this smaller version of the
 data we can do so by assigning it a new name:</p>
-<div class="codewrapper sourceCode" id="cb23">
+<div class="codewrapper sourceCode" id="cb15">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -745,7 +705,7 @@ data we can do so by assigning it a new name:</p>
 </div>
 <p>This new object includes all of the data from this sample. Let’s look
 at just the first six rows to confirm it’s what we want:</p>
-<div class="codewrapper sourceCode" id="cb24">
+<div class="codewrapper sourceCode" id="cb16">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -755,13 +715,13 @@ at just the first six rows to confirm it’s what we want:</p>
 can also look at the first or last six rows using tidyverse function
 <code>slice()</code>. Slice is a more versatile function that allows
 users to specify a range to view:</p>
-<div class="codewrapper sourceCode" id="cb25">
+<div class="codewrapper sourceCode" id="cb17">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">SRR2584863_variants</span> <span class="op">%&gt;%</span> <span class="fu">slice</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">6</span><span class="op">)</span></span></code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb26">
+<div class="codewrapper sourceCode" id="cb18">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -790,7 +750,7 @@ where the filtered depth (DP) is at least 10. Showing only 5th through
 </button>
 <div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
-<div class="codewrapper sourceCode" id="cb27">
+<div class="codewrapper sourceCode" id="cb19">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -816,7 +776,7 @@ a probability value according to the formula:</p>
 <p>We can use <code>mutate</code> to add a column (<code>POLPROB</code>)
 to our <code>variants</code> data frame that shows the probability of a
 polymorphism at that site given the data.</p>
-<div class="codewrapper sourceCode" id="cb28">
+<div class="codewrapper sourceCode" id="cb20">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -845,7 +805,7 @@ only show those columns.</p>
 </button>
 <div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
 <div class="accordion-body">
-<div class="codewrapper sourceCode" id="cb29">
+<div class="codewrapper sourceCode" id="cb21">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -867,7 +827,7 @@ makes this very easy through the use of the <code>group_by()</code>
 function, which splits the data into groups.</p>
 <p>We can use <code>group_by()</code> to tally the number of mutations
 detected in each sample using the function <code>tally()</code>:</p>
-<div class="codewrapper sourceCode" id="cb30">
+<div class="codewrapper sourceCode" id="cb22">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -878,7 +838,7 @@ detected in each sample using the function <code>tally()</code>:</p>
 <p>Since counting or tallying values is a common use case for
 <code>group_by()</code>, an alternative function was created to bypasses
 <code>group_by()</code> using the function <code>count()</code>:</p>
-<div class="codewrapper sourceCode" id="cb31">
+<div class="codewrapper sourceCode" id="cb23">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -904,7 +864,7 @@ detected in each sample using the function <code>tally()</code>:</p>
 </button>
 <div id="collapseSolution6" class="accordion-collapse collapse" aria-labelledby="headingSolution6" data-bs-parent="#accordionSolution6">
 <div class="accordion-body">
-<div class="codewrapper sourceCode" id="cb32">
+<div class="codewrapper sourceCode" id="cb24">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -938,7 +898,7 @@ easiest way to ignore <code>NA</code> (the missing data) is to use
 <code>na.rm = TRUE</code> (<code>rm</code> stands for remove).</p>
 <p>So to view the mean, median, maximum, and minimum filtered depth
 (<code>DP</code>) for each sample:</p>
-<div class="codewrapper sourceCode" id="cb33">
+<div class="codewrapper sourceCode" id="cb25">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -985,7 +945,7 @@ package (also part of the <code>tidyverse</code>).</p>
 <p><code>pivot_wider()</code> takes a data frame as the first argument,
 and two arguments: the column name that will become the columns and the
 column name that will become the cells in the wide data.</p>
-<div class="codewrapper sourceCode" id="cb34">
+<div class="codewrapper sourceCode" id="cb26">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -999,7 +959,7 @@ column name that will become the cells in the wide data.</p>
 <code>pivot_longer()</code>. We specify the names of the new columns,
 and here add <code>-CHROM</code> as this column shouldn’t be affected by
 the reshaping:</p>
-<div class="codewrapper sourceCode" id="cb35">
+<div class="codewrapper sourceCode" id="cb27">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
