@@ -827,7 +827,7 @@ Excel files, are you going to open and export all of them?).
 One common R package (a set of code with features you can download and add to
 your R installation) is the [readxl package](https://CRAN.R-project.org/package=readxl) which can open and import Excel files. 
 
-```{r, echo=FALSE, eval=TRUE, purl=FALSE, warning=FALSE}
+```{r, echo=TRUE, eval=TRUE, purl=FALSE, warning=FALSE}
 ## silently read in CSV file from CyVerse
 download.file("https://de.cyverse.org/dl/d/17FAE062-2673-417B-8544-77CC46974A37/Ecoli_metadata.xlsx",
               destfile = "Ecoli_metadata.xlsx")
