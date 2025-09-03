@@ -82,7 +82,7 @@ The Tidyverse's `readr` package provides its own unique way of loading .csv file
 
 Now let's load our vcf .csv file using `read_csv()`:
 
-```{r, include=FALSE, echo=FALSE, eval=FALSE, purl=FALSE}
+```{r, include=TRUE, echo=TRUE, eval=FALSE, purl=FALSE}
 variants <- read_csv("combined_tidy_vcf.csv") 
 ```
 
@@ -113,7 +113,7 @@ select(variants, -CHROM)
 
 `dplyr` also provides useful functions to select columns based on their names. For instance, `ends_with()` allows you to select columns that ends with specific letters. For instance, if you wanted to select columns that end with the letter "B":
 
-```{r}
+```{r, eval=FALSE}
 select(variants, ends_with("B"))
 ```
 
