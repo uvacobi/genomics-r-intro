@@ -679,9 +679,9 @@ install.packages("ggplot2")
 
 ``` output
 # Downloading packages -------------------------------------------------------
-- Downloading ggplot2 from https://packagemanager.posit.co/cran/__linux__/jammy/latest ... OK [5.7 Mb in 0.53s]
-- Downloading S7 from https://packagemanager.posit.co/cran/__linux__/jammy/latest ... OK [316.8 Kb in 0.4s]
-Successfully downloaded 2 packages in 2.7 seconds.
+- Downloading ggplot2 from https://packagemanager.posit.co/cran/__linux__/jammy/latest ... OK [5.7 Mb in 0.31s]
+- Downloading S7 from https://packagemanager.posit.co/cran/__linux__/jammy/latest ... OK [316.8 Kb in 0.24s]
+Successfully downloaded 2 packages in 1.6 seconds.
 
 The following package(s) will be installed:
 - ggplot2 [4.0.0]
@@ -689,8 +689,8 @@ The following package(s) will be installed:
 These packages will be installed into "~/work/genomics-r-intro/genomics-r-intro/renv/profiles/lesson-requirements/renv/library/linux-ubuntu-jammy/R-4.5/x86_64-pc-linux-gnu".
 
 # Installing packages --------------------------------------------------------
-- Installing S7 ...                             OK [installed binary and cached in 0.19s]
-- Installing ggplot2 ...                        OK [installed binary and cached in 0.94s]
+- Installing S7 ...                             OK [installed binary and cached in 0.18s]
+- Installing ggplot2 ...                        OK [installed binary and cached in 0.9s]
 Successfully installed 2 packages in 1.2 seconds.
 ```
 
@@ -705,7 +705,7 @@ These packages will be installed into "~/work/genomics-r-intro/genomics-r-intro/
 
 # Installing packages --------------------------------------------------------
 - Installing dplyr ...                          OK [linked from cache]
-Successfully installed 1 package in 4.9 milliseconds.
+Successfully installed 1 package in 4.5 milliseconds.
 ```
 
 These two packages are among the most popular add on packages used in R, and they are part of a large set of very useful packages called the [tidyverse](https://www.tidyverse.org). Packages in the tidyverse are designed to work well together and are made to work with tidy data (which we described earlier in this lesson). For these lessons, we have installed the packages for you, so you will not have to do this, but you might have to install packages for your own research later !!!
