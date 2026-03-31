@@ -678,20 +678,28 @@ install.packages("ggplot2")
 ```
 
 ``` output
-# Downloading packages -------------------------------------------------------
-- Downloading ggplot2 from https://packagemanager.posit.co/cran/__linux__/jammy/latest ... OK [5.7 Mb in 0.31s]
-- Downloading S7 from https://packagemanager.posit.co/cran/__linux__/jammy/latest ... OK [316.8 Kb in 0.24s]
-Successfully downloaded 2 packages in 1.6 seconds.
-
+- Querying repositories for available source packages ... Done!
 The following package(s) will be installed:
-- ggplot2 [4.0.0]
-- S7      [0.2.0]
+- cpp11       [0.5.3]
+- ggplot2     [4.0.2]
+- isoband     [0.3.0]
+- viridisLite [0.4.3]
 These packages will be installed into "~/work/genomics-r-intro/genomics-r-intro/renv/profiles/lesson-requirements/renv/library/linux-ubuntu-jammy/R-4.5/x86_64-pc-linux-gnu".
 
+# Downloading packages -------------------------------------------------------
+[?25l  (0/4) Downloading: ggplot2, isoband, cpp11, viridisLite                                                                                                       [32m✔[0m cpp11 0.5.3                              [300 kB in 0.4s]
+  (1/4) Downloading: ggplot2, isoband, viridisLite                                                                                                              [32m✔[0m isoband 0.3.0                            [1.7 MB in 0.42s]
+  (2/4) Downloading: ggplot2, viridisLite                                                                                                                       [32m✔[0m viridisLite 0.4.3                        [1.3 MB in 0.42s]
+  (3/4) Downloading: ggplot2                                                                                                                                    [32m✔[0m ggplot2 4.0.2                            [8.5 MB in 0.43s]
+                                                                                Successfully downloaded 4 packages in 0.6 seconds.
+
 # Installing packages --------------------------------------------------------
-- Installing S7 ...                             OK [installed binary and cached in 0.18s]
-- Installing ggplot2 ...                        OK [installed binary and cached in 0.9s]
-Successfully installed 2 packages in 1.2 seconds.
+  (0/4) Building: cpp11, viridisLite                                              (0/4) Building: cpp11, viridisLite                                              (0/4) Building: cpp11, viridisLite                                                                                                                            [32m✔[0m viridisLite 0.4.3                        [built from source]
+  (1/4) Building: cpp11                                                           (1/4) Building: cpp11                                                                                                                                         [32m✔[0m cpp11 0.5.3                              [built from source]
+  (2/4) Building: isoband                                                         (2/4) Building: isoband                                                                                                                                       [32m✔[0m isoband 0.3.0                            [built from source]
+  (3/4) Building: ggplot2                                                         (3/4) Building: ggplot2                                                                                                                                       [32m✔[0m ggplot2 4.0.2                            [built from source]
+Successfully installed 4 packages in 1.1 seconds.
+[?25h
 ```
 
 ``` r
@@ -700,12 +708,26 @@ install.packages("dplyr")
 
 ``` output
 The following package(s) will be installed:
-- dplyr [1.1.4]
+- dplyr    [1.2.0]
+- magrittr [2.0.4]
+- pillar   [1.11.1]
+- tibble   [3.3.1]
 These packages will be installed into "~/work/genomics-r-intro/genomics-r-intro/renv/profiles/lesson-requirements/renv/library/linux-ubuntu-jammy/R-4.5/x86_64-pc-linux-gnu".
 
+# Downloading packages -------------------------------------------------------
+[?25l  (0/4) Downloading: magrittr, pillar, dplyr, tibble                                                                                                            [32m✔[0m magrittr 2.0.4                           [222 kB in 0.37s]
+  (1/4) Downloading: pillar, dplyr, tibble                                                                                                                      [32m✔[0m pillar 1.11.1                            [661 kB in 0.37s]
+  (2/4) Downloading: dplyr, tibble                                                                                                                              [32m✔[0m dplyr 1.2.0                              [1.5 MB in 0.38s]
+  (3/4) Downloading: tibble                                                                                                                                     [32m✔[0m tibble 3.3.1                             [648 kB in 0.38s]
+                                                                                Successfully downloaded 4 packages in 0.54 seconds.
+
 # Installing packages --------------------------------------------------------
-- Installing dplyr ...                          OK [linked from cache]
-Successfully installed 1 package in 4.5 milliseconds.
+  (0/4) Building: magrittr, pillar                                                (0/4) Building: magrittr, pillar                                                (0/4) Building: magrittr, pillar                                                                                                                              [32m✔[0m magrittr 2.0.4                           [built from source]
+  (1/4) Building: pillar                                                          (1/4) Building: pillar                                                                                                                                        [32m✔[0m pillar 1.11.1                            [built from source]
+  (2/4) Building: tibble                                                          (2/4) Building: tibble                                                                                                                                        [32m✔[0m tibble 3.3.1                             [built from source]
+  (3/4) Building: dplyr                                                           (3/4) Building: dplyr                                                                                                                                         [32m✔[0m dplyr 1.2.0                              [built from source]
+Successfully installed 4 packages in 1 second.
+[?25h
 ```
 
 These two packages are among the most popular add on packages used in R, and they are part of a large set of very useful packages called the [tidyverse](https://www.tidyverse.org). Packages in the tidyverse are designed to work well together and are made to work with tidy data (which we described earlier in this lesson). For these lessons, we have installed the packages for you, so you will not have to do this, but you might have to install packages for your own research later !!!
